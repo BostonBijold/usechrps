@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import Button from "./Button";
+import Brand from "./Brand";
 
 export default function Footer() {
   return (
@@ -51,7 +52,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted sm:flex-row sm:items-center">
-          <p>&copy; {new Date().getFullYear()} Ch&rsquo;rps. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} <Brand />. All rights reserved.</p>
           <p>The job isn&rsquo;t done until the checklist is.</p>
         </div>
       </div>

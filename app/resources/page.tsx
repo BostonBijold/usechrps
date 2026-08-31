@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
+import Brand from "@/components/Brand";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -14,7 +15,7 @@ export default function ResourcesPage() {
         Resources
       </h1>
       <p className="mx-auto mt-5 max-w-xl text-lg text-muted">
-        Coming soon — how-to guides for running Ch&rsquo;rps at your
+        Coming soon — how-to guides for running <Brand /> at your
         business.
       </p>
       <div className="mt-8">

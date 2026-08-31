@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Section from "@/components/Section";
 import SignupForm from "@/components/SignupForm";
+import Brand from "@/components/Brand";
 
 export const metadata: Metadata = {
   title: "Sign up",
@@ -16,7 +17,7 @@ export default function SignupPage() {
           Let&rsquo;s get your team set up.
         </h1>
         <p className="mt-4 text-muted">
-          This creates a lead — Ch&rsquo;rps will follow up personally.
+          This creates a lead — <Brand /> will follow up personally.
           There&rsquo;s no self-serve billing yet, so nothing is charged and
           no account is created here. Browsing tag options first?{" "}
           <Link href="/store" className="text-brand hover:underline">

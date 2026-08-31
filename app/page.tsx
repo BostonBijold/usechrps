@@ -4,13 +4,19 @@ import Section from "@/components/Section";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import TaskStatePill from "@/components/TaskStatePill";
 import AppIcon from "@/components/AppIcon";
+import Brand from "@/components/Brand";
 import { SOLUTIONS } from "@/lib/solutions";
 
 const steps = [
   {
     n: "1",
     title: "Stick a tag at the station",
-    body: "A Ch'rps NFC tag goes wherever the check happens — the walk-in, the register, the front desk.",
+    body: (
+      <>
+        A <Brand /> NFC tag goes wherever the check happens — the walk-in,
+        the register, the front desk.
+      </>
+    ),
   },
   {
     n: "2",
@@ -35,7 +41,7 @@ export default function Home() {
               Checklists, trusted every time.
             </h1>
             <p className="mt-5 max-w-lg text-lg text-muted">
-              Ch&rsquo;rps verifies that the right person completed the right
+              <Brand /> verifies that the right person completed the right
               task, at the right place, at the right time — no more guessing
               whether the closing checklist actually got done.
             </p>
@@ -85,8 +91,8 @@ export default function Home() {
             </h2>
             <p className="mt-5 text-muted">
               Some platforms make employees stop and take a photo of their own
-              face every time they clock in — sometimes four times a day.
-              Ch&rsquo;rps doesn&rsquo;t. Your phone is already yours: it&rsquo;s
+              face every time they clock in — sometimes four times a day.{" "}
+              <Brand /> doesn&rsquo;t. Your phone is already yours: it&rsquo;s
               in your pocket, it&rsquo;s tied to your number, and you&rsquo;re
               not likely to hand it to someone else. That&rsquo;s real
               verification — the right person, physically present, using
@@ -119,7 +125,7 @@ export default function Home() {
             </h2>
             <p className="mt-5 text-muted">
               Task verification is the foundation. Clock-in/clock-out and
-              other operational tools are on the roadmap — Ch&rsquo;rps is
+              other operational tools are on the roadmap — <Brand /> is
               built to grow into the rest of how a physical-operations
               business actually runs, not stay a single-purpose checklist app.
             </p>

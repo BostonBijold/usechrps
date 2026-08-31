@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Section from "@/components/Section";
 import FeatureCard from "@/components/FeatureCard";
 import Button from "@/components/Button";
+import Brand from "@/components/Brand";
 import { FEATURES } from "@/lib/features";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function FeaturesPage() {
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-lg text-muted">
           The job isn&rsquo;t done until the checklist is. Here&rsquo;s
-          everything Ch&rsquo;rps does to make sure it actually gets done —
+          everything <Brand /> does to make sure it actually gets done —
           and recorded honestly.
         </p>
       </Section>

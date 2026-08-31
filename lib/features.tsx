@@ -1,8 +1,11 @@
+import type { ReactNode } from "react";
+import Brand from "@/components/Brand";
+
 export type Feature = {
   slug: string;
   icon: string;
   title: string;
-  description: string;
+  description: ReactNode;
   placeholder?: boolean;
 };
 
@@ -39,8 +42,13 @@ export const FEATURES: Feature[] = [
     slug: "scheduled-windows",
     icon: "clock",
     title: "Business hours & scheduled task windows",
-    description:
-      "Give each shift list a start time and Ch'rps handles the rest — a list surfaces when its window opens and locks in a clear, honest record once it's passed.",
+    description: (
+      <>
+        Give each shift list a start time and <Brand /> handles the rest — a
+        list surfaces when its window opens and locks in a clear, honest
+        record once it&rsquo;s passed.
+      </>
+    ),
   },
   {
     slug: "anytime-tasks",

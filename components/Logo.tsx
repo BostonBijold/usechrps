@@ -18,7 +18,7 @@ export default function Logo({ withWordmark = true }: { withWordmark?: boolean }
     <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Ch'rps home">
       <LogoMark size={36} />
       {withWordmark && (
-        <span className="font-wordmark text-2xl font-semibold text-ink leading-none">
+        <span className="font-wordmark text-2xl font-semibold text-brand leading-none">
           Ch&rsquo;rps
         </span>
       )}
