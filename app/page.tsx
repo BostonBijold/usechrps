@@ -1,0 +1,195 @@
+import Link from "next/link";
+import Button from "@/components/Button";
+import Section from "@/components/Section";
+import PlaceholderImage from "@/components/PlaceholderImage";
+import TaskStatePill from "@/components/TaskStatePill";
+
+const steps = [
+  {
+    n: "1",
+    title: "Stick a tag at the station",
+    body: "A Ch'rps NFC tag goes wherever the check happens — the walk-in, the register, the front desk.",
+  },
+  {
+    n: "2",
+    title: "Staff taps to mark it complete",
+    body: "A tap with their own phone, already in their pocket — no separate device, no shared login.",
+  },
+  {
+    n: "3",
+    title: "Managers see real-time proof",
+    body: "Timestamped, by whom, where, and when — as it happens, not reconstructed at the end of a shift.",
+  },
+];
+
+const verticals = [
+  { href: "/solutions/restaurants", label: "Restaurants" },
+  { href: "/solutions/gyms", label: "Gyms" },
+  { href: "/solutions/labs", label: "Labs" },
+  { href: "/solutions/hotels", label: "Hotels" },
+];
+
+export default function Home() {
+  return (
+    <>
+      {/* Hero */}
+      <Section>
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          <div>
+            <h1 className="font-heading text-4xl font-semibold leading-tight text-ink md:text-5xl">
+              Checklists, trusted every time.
+            </h1>
+            <p className="mt-5 max-w-lg text-lg text-muted">
+              Ch&rsquo;rps verifies that the right person completed the right
+              task, at the right place, at the right time — no more guessing
+              whether the closing checklist actually got done.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href="/signup">Get Started</Button>
+              <Button href="/features" variant="secondary">
+                See how it works
+              </Button>
+            </div>
+          </div>
+          <PlaceholderImage
+            label="[IMAGE: hero — app in use, or a stylized NFC-tap illustration]"
+            aspect="aspect-[4/3]"
+          />
+        </div>
+      </Section>
+
+      {/* How it works */}
+      <Section bg="bg-card">
+        <h2 className="font-heading text-center text-3xl font-semibold text-ink">
+          How it works
+        </h2>
+        <div className="mt-12 grid gap-10 md:grid-cols-3">
+          {steps.map((s) => (
+            <div key={s.n} className="flex flex-col items-center text-center">
+              <PlaceholderImage
+                label={`[IMAGE: step ${s.n}]`}
+                aspect="aspect-square"
+                className="mb-5 w-full max-w-[220px]"
+              />
+              <span className="font-data mb-2 text-xs uppercase tracking-wide text-brand">
+                Step {s.n}
+              </span>
+              <h3 className="text-lg font-semibold text-ink">{s.title}</h3>
+              <p className="mt-2 max-w-xs text-sm text-muted">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Verification / MFA-by-presence */}
+      <Section>
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          <div>
+            <h2 className="font-heading text-3xl font-semibold text-ink">
+              No more mugshots. Only taps.
+            </h2>
+            <p className="mt-5 text-muted">
+              Some platforms make employees stop and take a photo of their own
+              face every time they clock in — sometimes four times a day.
+              Ch&rsquo;rps doesn&rsquo;t. Your phone is already yours: it&rsquo;s
+              in your pocket, it&rsquo;s tied to your number, and you&rsquo;re
+              not likely to hand it to someone else. That&rsquo;s real
+              verification — the right person, physically present, using
+              their own device — without asking anyone for a selfie at 11pm
+              at the end of an eight-hour shift.
+            </p>
+            <p className="mt-4 text-muted">
+              No biometric scans. No facial recognition. No PIN pads. Just a
+              tap — verified by presence and device, not a photo.
+            </p>
+          </div>
+          <PlaceholderImage
+            label="[IMAGE: phone tapping an NFC tag, or a before/after comparison]"
+            aspect="aspect-[4/3]"
+          />
+        </div>
+      </Section>
+
+      {/* More than a checklist */}
+      <Section bg="bg-card">
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          <PlaceholderImage
+            label="[IMAGE: dashboard / analytics screenshot]"
+            aspect="aspect-[4/3]"
+            className="order-2 md:order-1"
+          />
+          <div className="order-1 md:order-2">
+            <h2 className="font-heading text-3xl font-semibold text-ink">
+              Built for real operations, not just checkboxes.
+            </h2>
+            <p className="mt-5 text-muted">
+              Task verification is the foundation. Clock-in/clock-out and
+              other operational tools are on the roadmap — Ch&rsquo;rps is
+              built to grow into the rest of how a physical-operations
+              business actually runs, not stay a single-purpose checklist app.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <TaskStatePill state="done" />
+              <TaskStatePill state="rest" />
+              <TaskStatePill state="missed" />
+              <TaskStatePill state="pending" />
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Vertical teaser */}
+      <Section>
+        <div className="text-center">
+          <h2 className="font-heading text-3xl font-semibold text-ink">
+            Built first for restaurants.
+          </h2>
+          <p className="mt-3 text-muted">
+            Built for gyms, labs, and hotels too.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+          {verticals.map((v) => (
+            <Link
+              key={v.href}
+              href={v.href}
+              className="group rounded-[var(--radius-card)] border border-border bg-white p-6 text-center transition-colors hover:border-brand"
+            >
+              <PlaceholderImage
+                label={`[ICON: ${v.label}]`}
+                aspect="aspect-square"
+                className="mx-auto mb-4 max-w-[80px]"
+              />
+              <span className="text-sm font-semibold text-ink group-hover:text-brand">
+                {v.label}
+              </span>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Button href="/solutions" variant="secondary">
+            Explore solutions
+          </Button>
+        </div>
+      </Section>
+
+      {/* Footer CTA */}
+      <Section bg="bg-brand" className="text-center">
+        <h2 className="font-heading text-3xl font-semibold text-white">
+          Ready to trust your checklists again?
+        </h2>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Button href="/signup" variant="inverse">
+            Get Started
+          </Button>
+          <Button href="/store" variant="inverse-ghost">
+            Browse tags
+          </Button>
+          <Button href="/contact" variant="inverse-ghost">
+            Contact us
+          </Button>
+        </div>
+      </Section>
+    </>
+  );
+}

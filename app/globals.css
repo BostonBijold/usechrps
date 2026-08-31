@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand */
+  --color-brand: #1f63b6; /* Brand Blue — actions, links, buttons, headers */
+  --color-brand-dark: #184e8f;
+  --color-done: #22b37c; /* Ch'rps Green — completion only */
+
+  /* Neutrals */
+  --color-bg: #ffffff;
+  --color-card: #eef2f7;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-border: #dbe2ea;
+
+  /* Functional (used sparingly, only for product-style status UI) */
+  --color-burgundy: #dc2626;
+  --color-amber: #d97706;
+  --color-blue-muted: #71717a;
+
+  /* Radii */
+  --radius-card: 12px;
+  --radius-button: 8px;
+  --radius-pill: 9999px;
+}
+
+@theme inline {
+  --color-brand: var(--color-brand);
+  --color-brand-dark: var(--color-brand-dark);
+  --color-done: var(--color-done);
+  --color-bg: var(--color-bg);
+  --color-card: var(--color-card);
+  --color-ink: var(--color-ink);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-burgundy: var(--color-burgundy);
+  --color-amber: var(--color-amber);
+  --color-blue-muted: var(--color-blue-muted);
+
+  --font-wordmark: var(--font-fredoka);
+  --font-heading: var(--font-playfair);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
+
+  --radius-card: var(--radius-card);
+  --radius-button: var(--radius-button);
+  --radius-pill: var(--radius-pill);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: var(--font-playfair), ui-serif, Georgia, serif;
+}
+
+.font-wordmark {
+  font-family: var(--font-fredoka), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-data {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+}
