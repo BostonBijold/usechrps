@@ -3,6 +3,8 @@ import Button from "@/components/Button";
 import Section from "@/components/Section";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import TaskStatePill from "@/components/TaskStatePill";
+import AppIcon from "@/components/AppIcon";
+import { SOLUTIONS } from "@/lib/solutions";
 
 const steps = [
   {
@@ -20,13 +22,6 @@ const steps = [
     title: "Managers see real-time proof",
     body: "Timestamped, by whom, where, and when — as it happens, not reconstructed at the end of a shift.",
   },
-];
-
-const verticals = [
-  { href: "/solutions/restaurants", label: "Restaurants" },
-  { href: "/solutions/gyms", label: "Gyms" },
-  { href: "/solutions/labs", label: "Labs" },
-  { href: "/solutions/hotels", label: "Hotels" },
 ];
 
 export default function Home() {
@@ -149,19 +144,17 @@ export default function Home() {
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-          {verticals.map((v) => (
+          {SOLUTIONS.map((s) => (
             <Link
-              key={v.href}
-              href={v.href}
+              key={s.slug}
+              href={`/solutions/${s.slug}`}
               className="group rounded-[var(--radius-card)] border border-border bg-white p-6 text-center transition-colors hover:border-brand"
             >
-              <PlaceholderImage
-                label={`[ICON: ${v.label}]`}
-                aspect="aspect-square"
-                className="mx-auto mb-4 max-w-[80px]"
-              />
+              <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-card text-brand">
+                <AppIcon name={s.slug} size={26} />
+              </span>
               <span className="text-sm font-semibold text-ink group-hover:text-brand">
-                {v.label}
+                {s.label}
               </span>
             </Link>
           ))}

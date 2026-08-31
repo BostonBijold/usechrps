@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Section from "@/components/Section";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import FeatureCard from "@/components/FeatureCard";
+import AppIcon from "@/components/AppIcon";
 import Button from "@/components/Button";
 import { SOLUTIONS, getSolution } from "@/lib/solutions";
 import { FEATURES } from "@/lib/features";
@@ -41,9 +42,12 @@ export default async function SolutionPage({
       <Section>
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
-            <p className="font-data mb-3 text-xs uppercase tracking-wide text-brand">
-              For {solution.label}
-            </p>
+            <div className="mb-3 flex items-center gap-2 text-brand">
+              <AppIcon name={solution.slug} size={18} />
+              <p className="font-data text-xs uppercase tracking-wide">
+                For {solution.label}
+              </p>
+            </div>
             <h1 className="font-heading text-4xl font-semibold text-ink md:text-5xl">
               {solution.headline}
             </h1>

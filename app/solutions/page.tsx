@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Section from "@/components/Section";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import AppIcon from "@/components/AppIcon";
 import { SOLUTIONS } from "@/lib/solutions";
 
 export const metadata: Metadata = {
@@ -28,11 +28,9 @@ export default function SolutionsPage() {
             href={`/solutions/${s.slug}`}
             className="group rounded-[var(--radius-card)] border border-border bg-white p-6 transition-colors hover:border-brand"
           >
-            <PlaceholderImage
-              label={`[ICON: ${s.label}]`}
-              aspect="aspect-[3/1]"
-              className="mb-4"
-            />
+            <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-[var(--radius-button)] bg-card text-brand">
+              <AppIcon name={s.slug} size={22} />
+            </span>
             <h2 className="text-lg font-semibold text-ink group-hover:text-brand">
               {s.label}
             </h2>
