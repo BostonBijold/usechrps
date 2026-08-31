@@ -33,13 +33,13 @@ const siteUrl = "https://usechrps.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Ch'rps — Shift checks, done right, every time.",
+    default: "Ch'rps — Checklists trusted every time.",
     template: "%s — Ch'rps",
   },
   description:
     "Ch'rps turns the shift checklist into an honest record. Task verification, NFC tap-to-trigger, and real-time analytics for restaurants, gyms, and hotels.",
   openGraph: {
-    title: "Ch'rps — Shift checks, done right, every time.",
+    title: "Ch'rps — Checklists trusted every time.",
     description:
       "Ch'rps turns the shift checklist into an honest record. Task verification, NFC tap-to-trigger, and real-time analytics for restaurants, gyms, and hotels.",
     url: siteUrl,

@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="max-w-sm">
             <Logo />
             <p className="mt-3 text-sm text-muted">
-              Shift checks, done right, every time.
+              Checklists trusted every time.
             </p>
             <div className="mt-5">
               <Button href="/signup">Get Started</Button>
