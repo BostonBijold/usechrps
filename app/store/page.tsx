@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Section from "@/components/Section";
-import PlaceholderImage from "@/components/PlaceholderImage";
 import Button from "@/components/Button";
 import Brand from "@/components/Brand";
 
@@ -17,6 +17,7 @@ const products = [
     description:
       "Durable NFC cards, sized for a station or wall mount — the standard choice for fridges, prep lines, and equipment.",
     priceRange: "$—–$— per pack (pricing TBD)",
+    image: "/images/cards.jpeg",
   },
   {
     name: "Ch'rps Stickers",
@@ -24,6 +25,7 @@ const products = [
     description:
       "Adhesive NFC stickers for tighter spaces — a shelf edge, a piece of equipment, a door frame.",
     priceRange: "$—–$— per pack (pricing TBD)",
+    image: "/images/stickers.jpeg",
   },
 ];
 
@@ -48,10 +50,12 @@ export default function StorePage() {
               key={p.name}
               className="rounded-[var(--radius-card)] border border-border bg-white p-6"
             >
-              <PlaceholderImage
-                label={`[IMAGE: ${p.name}]`}
-                aspect="aspect-[4/3]"
-                className="mb-5"
+              <Image
+                src={p.image}
+                alt={p.name}
+                width={600}
+                height={450}
+                className="mb-5 aspect-[4/3] w-full rounded-[var(--radius-card)] border border-border object-contain"
               />
               <h2 className="text-lg font-semibold text-ink">
                 <Brand /> {p.suffix}

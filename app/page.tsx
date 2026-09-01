@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/Button";
 import Section from "@/components/Section";
@@ -17,16 +18,22 @@ const steps = [
         the register, the front desk.
       </>
     ),
+    image: "/images/howto1.jpeg",
+    alt: "A Ch'rps NFC tag stuck to the door of a walk-in cooler",
   },
   {
     n: "2",
     title: "Staff taps to mark it complete",
     body: "A tap with their own phone, already in their pocket — no separate device, no shared login.",
+    image: "/images/howto2.jpeg",
+    alt: "A staff member tapping their phone on a Ch'rps NFC tag in the kitchen",
   },
   {
     n: "3",
     title: "Managers see real-time proof",
     body: "Timestamped, by whom, where, and when — as it happens, not reconstructed at the end of a shift.",
+    image: "/images/howto3.jpeg",
+    alt: "The Ch'rps app showing a real-time checklist of completed and pending tasks",
   },
 ];
 
@@ -52,9 +59,13 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <PlaceholderImage
-            label="[IMAGE: hero — app in use, or a stylized NFC-tap illustration]"
-            aspect="aspect-[4/3]"
+          <Image
+            src="/images/homepage-hero.jpeg"
+            alt="A restaurant staff member tapping their phone on a Ch'rps NFC tag to check a walk-in freezer"
+            width={734}
+            height={1456}
+            className="aspect-[4/3] w-full rounded-[var(--radius-card)] object-cover"
+            priority
           />
         </div>
       </Section>
@@ -67,10 +78,12 @@ export default function Home() {
         <div className="mt-12 grid gap-10 md:grid-cols-3">
           {steps.map((s) => (
             <div key={s.n} className="flex flex-col items-center text-center">
-              <PlaceholderImage
-                label={`[IMAGE: step ${s.n}]`}
-                aspect="aspect-square"
-                className="mb-5 w-full max-w-[220px]"
+              <Image
+                src={s.image}
+                alt={s.alt}
+                width={220}
+                height={220}
+                className="mb-5 aspect-square w-full max-w-[220px] rounded-[var(--radius-card)] object-cover"
               />
               <span className="font-data mb-2 text-xs uppercase tracking-wide text-brand">
                 Step {s.n}
@@ -104,9 +117,12 @@ export default function Home() {
               tap — verified by presence and device, not a photo.
             </p>
           </div>
-          <PlaceholderImage
-            label="[IMAGE: phone tapping an NFC tag, or a before/after comparison]"
-            aspect="aspect-[4/3]"
+          <Image
+            src="/images/mugshot.jpeg"
+            alt="An old-style facial recognition clock-out kiosk scanning an employee's face"
+            width={1407}
+            height={768}
+            className="aspect-[4/3] w-full rounded-[var(--radius-card)] object-cover"
           />
         </div>
       </Section>
