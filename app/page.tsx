@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/Button";
 import Section from "@/components/Section";
-import PlaceholderImage from "@/components/PlaceholderImage";
 import TaskStatePill from "@/components/TaskStatePill";
 import AppIcon from "@/components/AppIcon";
 import Brand from "@/components/Brand";
@@ -95,6 +94,79 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* More than a checklist */}
+      <Section>
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          <div>
+            <h2 className="font-heading text-3xl font-semibold text-ink">
+              Built for real operations, not just checkboxes.
+            </h2>
+            <p className="mt-5 text-muted">
+              Task verification and inventory are the foundation.
+              Clock-in/clock-out and other operational tools are on the
+              roadmap — <Brand /> is built to grow into the rest of how a
+              physical-operations business actually runs, not stay a
+              single-purpose checklist app.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <TaskStatePill state="done" />
+              <TaskStatePill state="rest" />
+              <TaskStatePill state="missed" />
+              <TaskStatePill state="pending" />
+            </div>
+          </div>
+          <Image
+            src="/images/checklists.png"
+            alt="The Ch'rps app showing Opening, Mid-Shift, and Closing shift checklists with live completion times"
+            width={788}
+            height={1336}
+            className="mx-auto w-full max-w-xs rounded-[var(--radius-card)] object-contain"
+            priority
+          />
+        </div>
+      </Section>
+
+      {/* Inventory */}
+      <Section bg="bg-card">
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          <Image
+            src="/images/inventory.png"
+            alt="The Ch'rps app's Inventory tab, showing a below-par paper towels count flagged in red"
+            width={874}
+            height={1322}
+            className="mx-auto w-full max-w-xs rounded-[var(--radius-card)] object-contain"
+          />
+          <div>
+            <h2 className="font-heading text-3xl font-semibold text-ink">
+              Know what&rsquo;s running low, before it&rsquo;s out.
+            </h2>
+            <p className="mt-5 text-muted">
+              A top-up count tracker for par levels — someone looks, someone
+              types the number they see. Organize items by storage area,
+              bind an NFC tag to the walk-in or the shelf, and let <Brand />{" "}
+              flag anything that&rsquo;s dropped below par before a manager
+              has to go looking.
+            </p>
+            <ul className="mt-6 space-y-2 text-sm text-muted">
+              <li className="flex items-start gap-2">
+                <AppIcon name="package" size={18} className="mt-0.5 shrink-0 text-brand" />
+                Grouped by area — Freezer, Dry Storage, Bar, or however your
+                space is laid out.
+              </li>
+              <li className="flex items-start gap-2">
+                <AppIcon name="nfc" size={18} className="mt-0.5 shrink-0 text-brand" />
+                NFC-tagged storage locations, sharing the same tags your
+                tasks already use.
+              </li>
+              <li className="flex items-start gap-2">
+                <AppIcon name="bell" size={18} className="mt-0.5 shrink-0 text-brand" />
+                Par-level alerts, so a low count gets caught at a glance.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </Section>
+
       {/* Verification / MFA-by-presence */}
       <Section>
         <div className="grid items-center gap-12 md:grid-cols-2">
@@ -124,34 +196,6 @@ export default function Home() {
             height={768}
             className="aspect-[4/3] w-full rounded-[var(--radius-card)] object-cover"
           />
-        </div>
-      </Section>
-
-      {/* More than a checklist */}
-      <Section bg="bg-card">
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          <PlaceholderImage
-            label="[IMAGE: dashboard / analytics screenshot]"
-            aspect="aspect-[4/3]"
-            className="order-2 md:order-1"
-          />
-          <div className="order-1 md:order-2">
-            <h2 className="font-heading text-3xl font-semibold text-ink">
-              Built for real operations, not just checkboxes.
-            </h2>
-            <p className="mt-5 text-muted">
-              Task verification is the foundation. Clock-in/clock-out and
-              other operational tools are on the roadmap — <Brand /> is
-              built to grow into the rest of how a physical-operations
-              business actually runs, not stay a single-purpose checklist app.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <TaskStatePill state="done" />
-              <TaskStatePill state="rest" />
-              <TaskStatePill state="missed" />
-              <TaskStatePill state="pending" />
-            </div>
-          </div>
         </div>
       </Section>
 
