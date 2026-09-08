@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
 import { validateContactMessage, type ContactMessage } from "@/lib/contact-message";
+import { createZohoLead, splitName } from "@/lib/zoho";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -30,6 +31,21 @@ export async function POST(request: Request) {
       { error: "Something went wrong sending your message. Please try again." },
       { status: 500 },
     );
+  }
+
+  try {
+    const { firstName, lastName } = splitName(contactMessage.name);
+    await createZohoLead({
+      Last_Name: lastName,
+      First_Name: firstName,
+      // Contact form doesn't collect a company name; Company is required by Zoho's Leads module.
+      Company: `${contactMessage.name} (via contact form)`,
+      Email: contactMessage.email,
+      Description: contactMessage.message,
+      Lead_Source: "Website",
+    });
+  } catch (err) {
+    console.error("Failed to push contact message to Zoho CRM", err);
   }
 
   return NextResponse.json({ ok: true }, { status: 201 });

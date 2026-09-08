@@ -7,7 +7,8 @@ const VERTICAL_OPTIONS = [
   { value: "restaurant", label: "Restaurant" },
   { value: "gym", label: "Gym" },
   { value: "lab", label: "Lab" },
-  { value: "hotel", label: "Hotel" },
+  // Hidden for now — not ready for production. Keep for when it comes back.
+  // { value: "hotel", label: "Hotel" },
   { value: "other", label: "Other" },
 ];
 
@@ -76,7 +77,7 @@ export default function SignupForm() {
       </div>
 
       <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
-        Vertical
+        Type of business
         <select
           name="vertical"
           required

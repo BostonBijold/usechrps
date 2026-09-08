@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Section from "@/components/Section";
 import PlaceholderImage from "@/components/PlaceholderImage";
@@ -56,10 +57,20 @@ export default async function SolutionPage({
               <Button href="/signup">Get Started</Button>
             </div>
           </div>
-          <PlaceholderImage
-            label={`[IMAGE: ${solution.label} in use]`}
-            aspect="aspect-[4/3]"
-          />
+          {solution.image ? (
+            <Image
+              src={solution.image.src}
+              alt={solution.image.alt}
+              width={1024}
+              height={1024}
+              className="aspect-[4/3] w-full rounded-[var(--radius-card)] object-cover"
+            />
+          ) : (
+            <PlaceholderImage
+              label={`[IMAGE: ${solution.label} in use]`}
+              aspect="aspect-[4/3]"
+            />
+          )}
         </div>
       </Section>
 

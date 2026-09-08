@@ -37,11 +37,11 @@ export const metadata: Metadata = {
     template: "%s — Ch'rps",
   },
   description:
-    "Ch'rps turns the shift checklist into an honest record. Task verification, NFC tap-to-trigger, and real-time analytics for restaurants, gyms, and hotels.",
+    "Ch'rps turns the shift checklist into an honest record. Task verification, NFC tap-to-trigger, and real-time analytics for restaurants, gyms, and labs.",
   openGraph: {
     title: "Ch'rps — Checklists trusted every time.",
     description:
-      "Ch'rps turns the shift checklist into an honest record. Task verification, NFC tap-to-trigger, and real-time analytics for restaurants, gyms, and hotels.",
+      "Ch'rps turns the shift checklist into an honest record. Task verification, NFC tap-to-trigger, and real-time analytics for restaurants, gyms, and labs.",
     url: siteUrl,
     siteName: "Ch'rps",
     type: "website",

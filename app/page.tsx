@@ -167,7 +167,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Verification / MFA-by-presence */}
+      {/* Verification / MFA-by-presence — hidden, not ready for production
       <Section>
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
@@ -198,6 +198,7 @@ export default function Home() {
           />
         </div>
       </Section>
+      */}
 
       {/* Vertical teaser */}
       <Section>
@@ -206,10 +207,10 @@ export default function Home() {
             Built first for restaurants.
           </h2>
           <p className="mt-3 text-muted">
-            Built for gyms, labs, and hotels too.
+            Built for gyms and labs too.
           </p>
         </div>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {SOLUTIONS.map((s) => (
             <Link
               key={s.slug}

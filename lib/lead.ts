@@ -35,7 +35,7 @@ export function validateLeadInput(body: unknown): { data: LeadInput } | { error:
   if (!EMAIL_RE.test(email)) return { error: "A valid email is required" };
   if (!phone) return { error: "Phone is required" };
   if (!VERTICALS.includes(vertical as Vertical)) {
-    return { error: "Please select a valid vertical" };
+    return { error: "Please select a valid type of business" };
   }
 
   return {

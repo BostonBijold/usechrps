@@ -5,6 +5,7 @@ export type Solution = {
   intro: string;
   painPoints: string[];
   primary?: boolean;
+  image?: { src: string; alt: string };
 };
 
 export const SOLUTIONS: Solution[] = [
@@ -32,6 +33,10 @@ export const SOLUTIONS: Solution[] = [
       "No record of who checked a piece of equipment or cleaned a station.",
       "Front-desk and locker-room readiness left to memory between shifts.",
     ],
+    image: {
+      src: "/images/tredmil.jpeg",
+      alt: "A treadmill on a gym floor",
+    },
   },
   {
     slug: "labs",
@@ -44,19 +49,24 @@ export const SOLUTIONS: Solution[] = [
       "No proof of who performed a required check, or when.",
       "Equipment and station readiness tracked on paper, disconnected from the actual schedule.",
     ],
+    image: {
+      src: "/images/lab.jpeg",
+      alt: "A lab technician working at a lab bench",
+    },
   },
-  {
-    slug: "hotels",
-    label: "Hotels",
-    headline: "Trusted checklists for every shift, built for hotels.",
-    intro:
-      "Room and station readiness, verified by the person who actually did the work.",
-    painPoints: [
-      "Room readiness checks that get marked done without being done.",
-      "No proof of who serviced a room or station, or when.",
-      "Compliance and safety checks tracked separately from the rest of the shift.",
-    ],
-  },
+  // Hidden for now — not ready for production. Keep for when it comes back.
+  // {
+  //   slug: "hotels",
+  //   label: "Hotels",
+  //   headline: "Trusted checklists for every shift, built for hotels.",
+  //   intro:
+  //     "Room and station readiness, verified by the person who actually did the work.",
+  //   painPoints: [
+  //     "Room readiness checks that get marked done without being done.",
+  //     "No proof of who serviced a room or station, or when.",
+  //     "Compliance and safety checks tracked separately from the rest of the shift.",
+  //   ],
+  // },
 ];
 
 export function getSolution(slug: string) {

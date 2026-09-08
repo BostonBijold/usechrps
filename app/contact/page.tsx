@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 // TODO: replace with real contact info
-const CONTACT_EMAIL = "bostonrbijold@gmail.com";
+const CONTACT_EMAIL = "contact@usechrps.com";
 const CONTACT_PHONE = "+1 (801) 819-8197";
 
 export default function ContactPage() {

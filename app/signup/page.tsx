@@ -17,9 +17,8 @@ export default function SignupPage() {
           Let&rsquo;s get your team set up.
         </h1>
         <p className="mt-4 text-muted">
-          This creates a lead — <Brand /> will follow up personally.
-          There&rsquo;s no self-serve billing yet, so nothing is charged and
-          no account is created here. Browsing tag options first?{" "}
+          Tell us a bit about your team and <Brand /> will follow up
+          personally to get you set up. Browsing tag options first?{" "}
           <Link href="/store" className="text-brand hover:underline">
             Check out the store
           </Link>

@@ -7,7 +7,7 @@ import { SOLUTIONS } from "@/lib/solutions";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Ch'rps for restaurants, gyms, labs, and hotels — solutions built around how your team actually works.",
+    "Ch'rps for restaurants, gyms, and labs — solutions built around how your team actually works.",
 };
 
 export default function SolutionsPage() {

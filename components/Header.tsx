@@ -9,7 +9,8 @@ const solutions = [
   { href: "/solutions/restaurants", label: "Restaurants" },
   { href: "/solutions/gyms", label: "Gyms" },
   { href: "/solutions/labs", label: "Labs" },
-  { href: "/solutions/hotels", label: "Hotels" },
+  // Hidden for now — not ready for production. Keep for when it comes back.
+  // { href: "/solutions/hotels", label: "Hotels" },
 ];
 
 const navLinks = [
