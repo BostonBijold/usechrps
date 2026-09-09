@@ -25,7 +25,7 @@ export default function PricingPage() {
         </p>
       </Section>
 
-      <Section bg="bg-card" tightTop>
+      <Section bg="bg-card">
         <div className="grid gap-6 lg:grid-cols-3">
           {TIERS.map((tier) => (
             <div
@@ -73,7 +73,7 @@ export default function PricingPage() {
         </p>
       </Section>
 
-      <Section tightTop>
+      <Section>
         <div className="text-center">
           <h2 className="font-heading text-2xl font-semibold text-ink">
             Not sure which plan fits?
@@ -83,7 +83,7 @@ export default function PricingPage() {
             self-serve checkout yet, just a quick conversation.
           </p>
           <div className="mt-6">
-            <Button href="/signup">Get Started</Button>
+            <Button href="/contact">Talk to Us</Button>
           </div>
         </div>
       </Section>
