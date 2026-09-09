@@ -15,6 +15,7 @@ const solutions = [
 
 const navLinks = [
   { href: "/features", label: "Features" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/store", label: "Store" },
   { href: "/resources", label: "Resources" },
   { href: "/about", label: "About" },
@@ -78,6 +79,12 @@ export default function Header() {
             )}
           </div>
 
+          <Link
+            href="/pricing"
+            className="rounded-[var(--radius-button)] px-3 py-2 text-sm font-medium text-ink hover:bg-card"
+          >
+            Pricing
+          </Link>
           <Link
             href="/store"
             className="rounded-[var(--radius-button)] px-3 py-2 text-sm font-medium text-ink hover:bg-card"

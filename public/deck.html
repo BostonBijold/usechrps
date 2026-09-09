@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch'rps — Prove the work got done</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --paper-tint:#eef4fb;
+    --ink:#14181c;
+    --ink-soft:#4c545b;
+    --ink-faint:#8a9198;
+    --blue:#2f6fb8;
+    --blue-deep:#1f4d85;
+    --brand-blue:#1f63b6;
+    --green:#4f9c3a;
+    --green-tint:#e9f4e3;
+    --line: rgba(20,24,28,0.12);
+    --line-soft: rgba(20,24,28,0.07);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0; padding:0; height:100%;
+    background:var(--paper);
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    overflow:hidden;
+  }
+
+  .deck{
+    position:relative;
+    width:100vw; height:100vh;
+    overflow:hidden;
+  }
+
+  .slide{
+    position:absolute; inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: clamp(28px, 6vw, 96px);
+    background:var(--paper);
+    opacity:0;
+    transform:translateX(40px);
+    transition: opacity .45s ease, transform .45s ease;
+    pointer-events:none;
+  }
+  .slide.tint{ background:var(--paper-tint); }
+  .slide.active{
+    opacity:1; transform:translateX(0);
+    pointer-events:auto;
+    z-index:2;
+  }
+  .slide.prev{ transform:translateX(-40px); }
+
+  .slide-inner{ max-width:1180px; margin:0 auto; width:100%; }
+
+  h1,h2,h3{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    letter-spacing:0.2px;
+    margin:0;
+    color:var(--ink);
+  }
+
+  .tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--blue-deep);
+    border:1px solid rgba(47,111,184,0.35);
+    padding:5px 12px;
+    border-radius:2px;
+    margin-bottom:28px;
+    background: rgba(47,111,184,0.06);
+  }
+  .tag::before{
+    content:"";
+    width:6px; height:6px;
+    background:var(--blue);
+    display:inline-block;
+    border-radius:50%;
+  }
+
+  p.lead{
+    font-size: clamp(17px, 1.9vw, 21px);
+    line-height:1.6;
+    color:var(--ink-soft);
+    max-width: 640px;
+    margin: 18px 0 0 0;
+  }
+
+  /* ===== Nav chrome ===== */
+  .chrome{
+    position:fixed; inset:0;
+    pointer-events:none;
+    z-index:10;
+  }
+  .brand{
+    position:fixed; top:28px; left:clamp(28px,6vw,96px);
+    display:flex; align-items:center; gap:8px;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600; font-size:17px;
+    color:var(--brand-blue);
+    z-index:20;
+  }
+  .brand .mark{
+    width:24px; height:24px;
+    display:block;
+  }
+
+  .progress-rail{
+    position:fixed; bottom:28px; left:50%; transform:translateX(-50%);
+    display:flex; gap:8px;
+    z-index:20;
+  }
+  .dot{
+    width:26px; height:3px;
+    background:var(--line);
+    border-radius:2px;
+    cursor:pointer;
+    transition: background .25s ease;
+    pointer-events:auto;
+  }
+  .dot.active{ background:var(--blue); }
+
+  .nav-btn{
+    position:fixed; top:50%; transform:translateY(-50%);
+    width:44px; height:44px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,0.85);
+    backdrop-filter: blur(6px);
+    color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    z-index:20;
+    font-size:18px;
+    box-shadow: 0 1px 3px rgba(20,24,28,0.08);
+    transition: border-color .2s ease, background .2s ease, color .2s ease;
+    pointer-events:auto;
+  }
+  .nav-btn:hover{ border-color:var(--blue); background:#fff; color:var(--blue); }
+  .nav-btn.prev{ left:20px; }
+  .nav-btn.next{ right:20px; }
+  .nav-btn:disabled{ opacity:0.25; cursor:default; }
+  .nav-btn:disabled:hover{ border-color:var(--line); background:rgba(255,255,255,0.85); color:var(--ink); }
+
+  .slide-count{
+    position:fixed; bottom:30px; right:clamp(28px,6vw,96px);
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px; color:var(--ink-faint);
+    z-index:20;
+  }
+
+  /* ===== Image placeholder ===== */
+  .imgspot{
+    border:1.5px dashed rgba(47,111,184,0.4);
+    border-radius:2px;
+    background: repeating-linear-gradient(135deg, rgba(47,111,184,0.045) 0px, rgba(47,111,184,0.045) 10px, transparent 10px, transparent 20px);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    color:var(--blue-deep);
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    line-height:1.5;
+    padding:16px;
+  }
+  .imgspot.photo{
+    border:none;
+    background:none;
+    padding:0;
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  /* ===== Slide-specific layouts ===== */
+
+  /* Slide 1 — Title */
+  .s-title .grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:64px; align-items:center;
+  }
+  .s-title h1{
+    font-size: clamp(40px, 6vw, 74px);
+    line-height:1.05;
+  }
+  .s-title .imgspot{ aspect-ratio:4/5; }
+  .hero-copy{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .hero-phone{
+    width:100%;
+    max-width:320px;
+    height:auto;
+    display:block;
+    margin:0 auto;
+  }
+  .hero-mark{
+    width: clamp(110px, 13vw, 220px);
+    height: auto;
+    display:block;
+    margin-bottom: 24px;
+  }
+  .s-title h1.hero-wordmark{
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    letter-spacing:0;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height:1.05;
+    color:var(--brand-blue);
+  }
+  .hero-tagline{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    font-size: clamp(20px, 2.6vw, 28px);
+    line-height:1.3;
+    color:var(--ink);
+    margin:16px 0 0;
+  }
+  .cta-row{ margin-top:36px; display:flex; gap:14px; align-items:center; }
+  .btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:14.5px;
+    padding:13px 22px; border-radius:2px; border:none; cursor:pointer;
+  }
+  .btn.primary{ background:var(--blue); color:#fff; }
+  .btn.ghost{ background:transparent; color:var(--ink); border:1px solid var(--line); }
+
+  /* Slide 2 — Problem */
+  .s-problem .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:70px; align-items:start; }
+  .prob-list{ list-style:none; margin:30px 0 0; padding:0; display:flex; flex-direction:column; gap:22px; }
+  .prob-list li{
+    display:flex; gap:16px; align-items:flex-start;
+    font-size:16.5px; color:var(--ink-soft); line-height:1.55;
+    padding-bottom:22px; border-bottom:1px solid var(--line-soft);
+  }
+  .prob-list li:last-child{ border-bottom:none; padding-bottom:0; }
+  .prob-list .num{
+    font-family:'JetBrains Mono',monospace; color:var(--blue); font-size:13px;
+    padding-top:3px; flex-shrink:0; width:22px;
+  }
+  .s-problem .imgspot{ aspect-ratio:3/4; }
+
+  /* Slide 3 — Solution */
+  .s-solution .grid{ display:grid; grid-template-columns: 0.95fr 1.05fr; gap:70px; align-items:center; }
+  .s-solution .imgspot{ aspect-ratio:1/1; }
+  .fact-strip{
+    display:flex; gap:0; margin-top:34px; border-top:1px solid var(--line);
+  }
+  .fact{ flex:1; padding:18px 20px 0 0; }
+  .fact .n{ font-family:'Oswald',sans-serif; font-size:26px; color:var(--blue); }
+  .fact .l{ font-size:13px; color:var(--ink-faint); margin-top:4px; }
+
+  /* Slide 4 — How it works */
+  .steps{ display:grid; grid-template-columns: repeat(3,1fr); gap:28px; margin-top:44px; }
+  .step{ border-top:2px solid var(--blue); padding-top:18px; }
+  .step:nth-child(2){ border-top-color:var(--green); }
+  .step:nth-child(3){ border-top-color:var(--blue-deep); }
+  .step .stepnum{ font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--ink-faint); margin-bottom:10px; }
+  .step h3{ font-size:20px; margin-bottom:10px; color:var(--ink); }
+  .step p{ font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin:0; }
+  .step .imgspot{ aspect-ratio:16/10; margin-top:16px; font-size:11.5px; }
+
+  /* Slide 5 — Comparison */
+  .compare{
+    margin-top:36px;
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+    background:#fff;
+  }
+  .crow{ display:grid; grid-template-columns: 1.3fr 1fr 1fr; }
+  .crow > div{ padding:16px 20px; font-size:14.5px; line-height:1.5; }
+  .crow.head > div{
+    font-family:'Oswald',sans-serif; font-size:14px; letter-spacing:0.3px;
+    color:var(--ink); background:var(--paper-tint);
+    border-bottom:1px solid var(--line);
+  }
+  .crow:not(.head){ border-bottom:1px solid var(--line-soft); }
+  .crow:not(.head):last-child{ border-bottom:none; }
+  .crow:not(.head) > div:first-child{ color:var(--ink-soft); }
+  .crow:not(.head) > div:nth-child(2){ color:var(--ink-faint); }
+  .crow:not(.head) > div:nth-child(3){ color:var(--green); font-weight:600; }
+
+  /* Slide 6 — Founder credibility */
+  .s-founder .grid{ display:grid; grid-template-columns: 0.85fr 1.15fr; gap:70px; align-items:center; }
+  .s-founder .imgspot{ aspect-ratio:4/5; }
+  .quote{
+    font-family:'Oswald',sans-serif; font-weight:400; font-size: clamp(21px,2.4vw,28px);
+    line-height:1.4; color:var(--ink); margin:22px 0 0;
+  }
+
+  /* Slide 7 — What you get */
+  .feat-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:1px; background:var(--line); margin-top:36px; border:1px solid var(--line); }
+  .feat{ background:#fff; padding:24px; }
+  .feat h3{ font-size:16.5px; color:var(--ink); margin-bottom:8px; }
+  .feat p{ font-size:14px; color:var(--ink-soft); line-height:1.55; margin:0; }
+
+  /* Slide 8 — CTA */
+  .s-cta{ align-items:center; text-align:left; }
+  .s-cta .grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:64px; align-items:center; }
+  .s-cta h1{ font-size:clamp(34px,4.6vw,54px); line-height:1.1; }
+  .contact-block{ margin-top:30px; display:flex; flex-direction:column; gap:10px; }
+  .contact-block a{ color:var(--ink); text-decoration:none; font-size:16px; border-bottom:1px solid var(--line); padding-bottom:2px; width:fit-content; }
+  .contact-block a:hover{ border-color:var(--blue); color:var(--blue); }
+  .s-cta .imgspot{ aspect-ratio:1/1; }
+
+  @media (max-width: 860px){
+    .s-title .grid, .s-problem .grid, .s-solution .grid, .s-founder .grid, .s-cta .grid{
+      grid-template-columns: 1fr; gap:30px;
+    }
+    .steps{ grid-template-columns:1fr; }
+    .feat-grid{ grid-template-columns:1fr; }
+    .crow{ grid-template-columns: 1.2fr 1fr 1fr; }
+    .crow > div{ padding:12px 14px; font-size:13px; }
+    .nav-btn{ width:38px; height:38px; }
+    .brand{ font-size:14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .slide{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chrome">
+  <div class="brand">
+    <img class="mark" src="/brand/chrps-mark.png" alt="" />
+    Ch&rsquo;rps
+  </div>
+  <button class="nav-btn prev" id="prevBtn" aria-label="Previous slide">&#8249;</button>
+  <button class="nav-btn next" id="nextBtn" aria-label="Next slide">&#8250;</button>
+  <div class="progress-rail" id="progressRail"></div>
+  <div class="slide-count" id="slideCount"></div>
+</div>
+
+<div class="deck" id="deck">
+
+  <!-- 1. HERO -->
+  <section class="slide s-title">
+    <div class="slide-inner grid">
+      <div class="hero-copy">
+        <img class="hero-mark" src="/brand/chrps-mark.png" alt="" />
+        <h1 class="hero-wordmark">Ch&rsquo;rps</h1>
+        <h2 class="hero-tagline">Checklists trusted every time.</h2>
+      </div>
+      <img class="hero-phone" src="/images/checklists.png" alt="Ch'rps checklist screen on a phone" />
+    </div>
+  </section>
+
+  <!-- 2. TITLE -->
+  <section class="slide s-title">
+    <div class="slide-inner grid">
+      <div>
+        <div class="tag">Built for restaurant operations</div>
+        <h1>Prove the work got done.</h1>
+        <p class="lead">Ch'rps replaces paper checklists and self-reported apps with a single tap that only counts when your team is standing at the actual spot — the walk-in, the fryer, the restroom.</p>
+        <div class="cta-row">
+          <button class="btn primary">See a live demo</button>
+          <button class="btn ghost">How it works</button>
+        </div>
+      </div>
+      <img class="imgspot photo" src="/images/homepage-hero.jpeg" alt="A staff member tapping their phone to an NFC tag mounted on a walk-in cooler" />
+    </div>
+  </section>
+
+  <!-- 3. PROBLEM -->
+  <section class="slide tint s-problem">
+    <div class="slide-inner grid">
+      <div>
+        <div class="tag">The problem</div>
+        <h2 style="font-size:clamp(28px,3.6vw,42px);">Checklists nobody can actually trust</h2>
+        <ul class="prob-list">
+          <li><span class="num">01</span>Paper logs get filled out all at once at the end of a shift — not when the work happened.</li>
+          <li><span class="num">02</span>Self-reported apps can be checked off from the break room, the parking lot, or home.</li>
+          <li><span class="num">03</span>When a health inspector or a corporate auditor asks for proof, there isn't any.</li>
+          <li><span class="num">04</span>Managers find out a task was missed only after something's already gone wrong.</li>
+        </ul>
+      </div>
+      <div class="imgspot">Photo: a stack of paper checklists on a clipboard, or a blank/incomplete log sheet</div>
+    </div>
+  </section>
+
+  <!-- 4. SOLUTION -->
+  <section class="slide s-solution">
+    <div class="slide-inner grid">
+      <img class="imgspot photo" src="/images/howto1.jpeg" alt="Close-up of an NFC tag mounted on a prep cooler" />
+      <div>
+        <div class="tag">The solution</div>
+        <h2 style="font-size:clamp(28px,3.6vw,42px);">Verification that's locked to the location</h2>
+        <p class="lead">A small NFC tag goes wherever the task actually happens. Staff tap their phone to complete it — the tap can't register from anywhere else. Every entry is timestamped and tied to that exact spot, automatically.</p>
+        <div class="fact-strip">
+          <div class="fact"><div class="n">1 tap</div><div class="l">to complete a task, no app hunting</div></div>
+          <div class="fact"><div class="n">0</div><div class="l">ways to fake a location</div></div>
+          <div class="fact"><div class="n">Live</div><div class="l">manager visibility, not end-of-shift</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. HOW IT WORKS -->
+  <section class="slide tint">
+    <div class="slide-inner">
+      <div class="tag">How it works</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);">Three steps, no training required</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="stepnum">Step 01</div>
+          <h3>Place a tag</h3>
+          <p>Stick an NFC tag at the walk-in, the handwash sink, the fryer — wherever the task lives.</p>
+          <img class="imgspot photo" src="/images/stickers.jpeg" alt="Ch'rps branded NFC tag stickers" />
+        </div>
+        <div class="step">
+          <div class="stepnum">Step 02</div>
+          <h3>Staff tap to complete</h3>
+          <p>Employees tap their phone against the tag when the task is done. No app to dig for, no login to remember.</p>
+          <img class="imgspot photo" src="/images/howto2.jpeg" alt="Employee's phone touching an NFC tag, app screen visible" />
+        </div>
+        <div class="step">
+          <div class="stepnum">Step 03</div>
+          <h3>Managers see it live</h3>
+          <p>Every tap lands in a running log — who, where, and exactly when — visible from the console in real time.</p>
+          <img class="imgspot photo" src="/images/howto3.jpeg" alt="Manager viewing the task log on their phone" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. COMPARISON -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="tag">Why it's different</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);">Not another checkbox app</h2>
+      <p class="lead" style="margin-top:14px;">Most task apps ask your team to self-report. Ch'rps asks the location to confirm it.</p>
+      <div class="compare">
+        <div class="crow head"><div>What happens</div><div>Self-reported apps</div><div>Ch'rps</div></div>
+        <div class="crow"><div>Task marked complete</div><div>From anywhere</div><div>Only at the tagged spot</div></div>
+        <div class="crow"><div>Proof for an inspector</div><div>A checkbox and a name</div><div>Time-stamped, location-locked log</div></div>
+        <div class="crow"><div>Missed task alerts</div><div>Usually after the fact</div><div>Flagged as it happens</div></div>
+        <div class="crow"><div>Setup for staff</div><div>Accounts, logins, training</div><div>Tap and go</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FOUNDER -->
+  <section class="slide tint s-founder">
+    <div class="slide-inner grid">
+      <div class="imgspot">Photo: founder portrait, ideally in a kitchen/restaurant setting</div>
+      <div>
+        <div class="tag">Built by someone who's worked the line</div>
+        <p class="quote">"I've run these shifts myself. I built Ch'rps because I know exactly where paper checklists fall apart — and exactly what a manager actually needs to see."</p>
+        <p class="lead" style="margin-top:24px;">Ch'rps is built by a food-service veteran turned software engineer, designed around how restaurants really operate — not a generic task-tracking template.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FEATURES -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="tag">What you get</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);">More than tap verification</h2>
+      <div class="feat-grid">
+        <div class="feat"><h3>Task lists & checklists</h3><p>Build recurring or one-time task lists for opening, closing, and every shift in between.</p></div>
+        <div class="feat"><h3>Photo instructions</h3><p>Attach reference photos and steps so any employee — new or seasoned — knows exactly what "done" looks like.</p></div>
+        <div class="feat"><h3>Inventory counts</h3><p>Simple top-up counting that matches how your team already checks stock, no ledger math.</p></div>
+        <div class="feat"><h3>Reports & alerts</h3><p>See trends over time and catch missed tasks before they become a bigger problem.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CTA -->
+  <section class="slide tint s-cta">
+    <div class="slide-inner grid">
+      <div>
+        <div class="tag">Get started</div>
+        <h1>See it running in your kitchen.</h1>
+        <p class="lead">We'll bring a tag, tap it live on your equipment, and show you what your managers would see the next morning. No commitment, fifteen minutes.</p>
+        <div class="contact-block">
+          <a href="mailto:sales@usechrps.com">sales@usechrps.com</a>
+          <a href="https://usechrps.com">usechrps.com</a>
+        </div>
+      </div>
+      <img class="imgspot photo" src="/images/cards.jpeg" alt="Ch'rps branded NFC cards" />
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const rail = document.getElementById('progressRail');
+  const countEl = document.getElementById('slideCount');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    dot.addEventListener('click', () => goTo(i));
+    rail.appendChild(dot);
+  });
+  const dots = Array.from(rail.children);
+
+  function render(){
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === current);
+      s.classList.toggle('prev', i < current);
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    countEl.textContent = (current + 1) + ' / ' + slides.length;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === slides.length - 1;
+  }
+
+  function goTo(i){
+    current = Math.max(0, Math.min(slides.length - 1, i));
+    render();
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') goTo(current + 1);
+    if (e.key === 'ArrowLeft') goTo(current - 1);
+  });
+
+  // swipe support
+  let touchX = null;
+  document.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (dx > 50) goTo(current - 1);
+    if (dx < -50) goTo(current + 1);
+    touchX = null;
+  });
+
+  render();
+</script>
+
+</body>
+</html>
