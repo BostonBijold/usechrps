@@ -19,7 +19,7 @@ export default function Logo({ withWordmark = true }: { withWordmark?: boolean }
       <LogoMark size={36} />
       {withWordmark && (
         <span className="font-wordmark text-2xl font-semibold text-brand leading-none">
-          Ch&rsquo;rps
+          Ch&apos;rps
         </span>
       )}
     </Link>
