@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fredoka, Playfair_Display, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Fredoka, Merriweather, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -10,10 +10,10 @@ const fredoka = Fredoka({
   weight: ["500", "600"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "700", "900"],
 });
 
 const inter = Inter({
@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fredoka.variable} ${playfair.variable} ${inter.variable} ${plexMono.variable} antialiased flex min-h-screen flex-col`}
+        className={`${fredoka.variable} ${merriweather.variable} ${inter.variable} ${plexMono.variable} antialiased flex min-h-screen flex-col`}
       >
         <Header />
         <main className="flex-1">{children}</main>
