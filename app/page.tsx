@@ -47,9 +47,9 @@ export default function Home() {
               Checklists, trusted every time.
             </h1>
             <p className="mt-5 max-w-lg text-lg text-muted">
-              <Brand /> verifies that the right person completed the right
-              task, at the right place, at the right time — no more guessing
-              whether the closing checklist actually got done.
+              <Brand /> verifies that the right person completes the right
+              task, in the right place, at the right time — no more guessing
+              whether your checklist actually got done.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/signup">Get Started</Button>
