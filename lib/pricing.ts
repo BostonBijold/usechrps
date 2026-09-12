@@ -9,6 +9,50 @@ export type Tier = {
   highlight?: boolean;
 };
 
+export type Kit = {
+  slug: string;
+  name: string;
+  tagSummary: string;
+  listPrice: string;
+  signupPrice: string;
+  discountLabel: string;
+  blurb: string;
+};
+
+export const KITS: Kit[] = [
+  {
+    slug: "starter-kit",
+    name: "Starter Kit",
+    tagSummary: "10 tags — 5 on-metal, 5 off-metal",
+    listPrice: "$75",
+    signupPrice: "$50",
+    discountLabel: "33% off",
+    blurb:
+      "Sized for the toughest spots — freezer, walk-in, prep line — plus enough for checklist points around the floor.",
+  },
+  {
+    slug: "pro-kit",
+    name: "Pro Kit",
+    tagSummary: "30 tags — 10 on-metal, 20 off-metal",
+    listPrice: "$150",
+    signupPrice: "$100",
+    discountLabel: "33% off",
+    blurb:
+      "Built for Par Sheet tracking — shelves, storage, individual items — so it leans harder into on-metal tags for durability in the same rugged spots Pro's Par Sheet features actually get used.",
+  },
+];
+
+export type ReorderTag = {
+  slug: string;
+  label: string;
+  price: string;
+};
+
+export const REORDER_TAGS: ReorderTag[] = [
+  { slug: "off-metal", label: "Off-metal (sticker)", price: "$1.75 / tag" },
+  { slug: "on-metal", label: "On-metal (durable)", price: "$3.75 / tag" },
+];
+
 export const TIERS: Tier[] = [
   {
     slug: "starter",
