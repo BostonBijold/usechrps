@@ -38,9 +38,10 @@ export default function StorePage() {
           <Brand />-branded NFC tags, ready to use.
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-lg text-muted">
-          <Brand /> tags are pre-provisioned and claimed to your company on
-          setup — a tag not purchased through <Brand /> simply won&rsquo;t
-          claim, so there&rsquo;s no guesswork about compatible hardware.
+          Every <Brand /> tag is built to survive where it&rsquo;s mounted —
+          freezer-rated on-metal tags for your toughest spots, reliable
+          off-metal tags everywhere else. This is the hardware that turns a
+          checklist into a verified, timestamped record.
         </p>
       </Section>
 
@@ -78,7 +79,9 @@ export default function StorePage() {
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-muted">
             Need more tags later? Order exactly what you need, whenever you
-            need it.
+            need it. Tags are pre-provisioned and claimed to your company on
+            setup — a tag not purchased through <Brand /> simply won&rsquo;t
+            claim, so there&rsquo;s no guesswork about compatible hardware.
           </p>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
