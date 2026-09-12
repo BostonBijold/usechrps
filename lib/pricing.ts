@@ -31,7 +31,7 @@ export const TIERS: Tier[] = [
     description: "For teams that want the full operational picture.",
     features: [
       "Everything in Starter",
-      "Inventory management",
+      "Par Sheet management",
       "Admin Console & advanced reports",
       "Notifications (missed-list alerts, start-time reminders)",
       "Time clock (once shipped)",

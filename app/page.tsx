@@ -102,7 +102,7 @@ export default function Home() {
               Built for real operations, not just checkboxes.
             </h2>
             <p className="mt-5 text-muted">
-              Task verification and inventory are the foundation.
+              Task verification and Par Sheets are the foundation.
               Clock-in/clock-out and other operational tools are on the
               roadmap — <Brand /> is built to grow into the rest of how a
               physical-operations business actually runs, not stay a
@@ -126,12 +126,12 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Inventory */}
+      {/* Par Sheet */}
       <Section bg="bg-card">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <Image
             src="/images/inventory.png"
-            alt="The Ch'rps app's Inventory tab, showing a below-par paper towels count flagged in red"
+            alt="The Ch'rps app's Par Sheet tab, showing a below-par paper towels count flagged in red"
             width={874}
             height={1322}
             className="mx-auto w-full max-w-xs rounded-[var(--radius-card)] object-contain"

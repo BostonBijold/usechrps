@@ -86,9 +86,9 @@ export const FEATURES: Feature[] = [
       "Start a timed task and track it right from the Lock Screen or Dynamic Island — the running clock and estimated finish time, no need to unlock and reopen the app.",
   },
   {
-    slug: "inventory",
+    slug: "par-sheet",
     icon: "package",
-    title: "Inventory tracking",
+    title: "Par Sheet tracking",
     description:
       "A top-up count tracker for par levels — someone looks, someone logs the number. NFC-tagged storage locations, grouped by area, with par-level alerts and counts linked right to the tasks that trigger them.",
   },
