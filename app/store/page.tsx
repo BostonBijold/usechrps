@@ -3,6 +3,7 @@ import Image from "next/image";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import Brand from "@/components/Brand";
+import { KITS } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Store",
@@ -44,7 +45,43 @@ export default function StorePage() {
       </Section>
 
       <Section bg="bg-card" tightTop>
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="text-center">
+          <h2 className="font-heading text-2xl font-semibold text-ink">
+            Hardware Kits
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted">
+            A one-time hardware fee, separate from your subscription, charged
+            once per location.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          {KITS.map((kit) => (
+            <div
+              key={kit.slug}
+              className="flex flex-col rounded-[var(--radius-card)] border border-border bg-white p-6"
+            >
+              <h3 className="text-lg font-semibold text-ink">{kit.name}</h3>
+              <p className="mt-1 text-sm text-muted">{kit.tagSummary}</p>
+              <p className="font-heading mt-4 text-2xl font-semibold text-ink">
+                {kit.listPrice}
+              </p>
+              <p className="mt-4 flex-1 text-sm text-muted">{kit.blurb}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <div className="text-center">
+          <h2 className="font-heading text-2xl font-semibold text-ink">
+            Individual tags
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted">
+            Need more tags later? Order exactly what you need, whenever you
+            need it.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {products.map((p) => (
             <div
               key={p.name}
@@ -57,9 +94,9 @@ export default function StorePage() {
                 height={450}
                 className="mb-5 aspect-[4/3] w-full rounded-[var(--radius-card)] border border-border object-contain"
               />
-              <h2 className="text-lg font-semibold text-ink">
+              <h3 className="text-lg font-semibold text-ink">
                 <Brand /> {p.suffix}
-              </h2>
+              </h3>
               <p className="mt-2 text-sm text-muted">{p.description}</p>
               <p className="font-data mt-4 text-xs uppercase tracking-wide text-brand">
                 Starting at {p.priceRange}

@@ -1,4 +1,4 @@
 /** Renders "Ch'rps" in the brand blue — use for every visible mention of the name. */
 export default function Brand() {
-  return <span className="text-brand">Ch&apos;rps</span>;
+  return <span className="font-wordmark text-brand">Ch&apos;rps</span>;
 }
