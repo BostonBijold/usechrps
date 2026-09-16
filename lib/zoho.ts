@@ -50,7 +50,7 @@ export type ZohoLeadFields = {
   Lead_Source?: string;
 };
 
-export async function createZohoLead(fields: ZohoLeadFields): Promise<void> {
+export async function createZohoLead(fields: ZohoLeadFields): Promise<string> {
   const accessToken = await getAccessToken();
 
   const res = await fetch(`${API_DOMAIN}/crm/v6/Leads`, {
@@ -66,6 +66,44 @@ export async function createZohoLead(fields: ZohoLeadFields): Promise<void> {
   const record = data?.data?.[0];
   if (!res.ok || record?.status !== "success") {
     throw new Error(`Failed to create Zoho lead: ${JSON.stringify(data)}`);
+  }
+  return record.details.id as string;
+}
+
+export type ZohoTaskFields = {
+  Subject: string;
+  Who_Id: string;
+  Description?: string;
+  Due_Date?: string;
+  Priority?: "High" | "Normal" | "Low";
+};
+
+/** Creates a Task linked to a Lead record, so it shows up (with Zoho's own reminders) in the CRM. */
+export async function createZohoLeadTask(fields: ZohoTaskFields): Promise<void> {
+  const accessToken = await getAccessToken();
+
+  const res = await fetch(`${API_DOMAIN}/crm/v6/Tasks`, {
+    method: "POST",
+    headers: {
+      Authorization: `Zoho-oauthtoken ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: [
+        {
+          ...fields,
+          $se_module: "Leads",
+          Status: "Not Started",
+        },
+      ],
+      trigger: [],
+    }),
+  });
+
+  const data = await res.json().catch(() => ({}));
+  const record = data?.data?.[0];
+  if (!res.ok || record?.status !== "success") {
+    throw new Error(`Failed to create Zoho task: ${JSON.stringify(data)}`);
   }
 }
 

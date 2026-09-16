@@ -12,6 +12,13 @@ const VERTICAL_OPTIONS = [
   { value: "other", label: "Other" },
 ];
 
+const CALL_WINDOW_OPTIONS = [
+  { value: "morning", label: "Morning (9am–12pm)" },
+  { value: "afternoon", label: "Afternoon (12pm–4pm)" },
+  { value: "evening", label: "Evening (4pm–6pm)" },
+  { value: "anytime", label: "Anytime" },
+];
+
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function SignupForm() {
@@ -90,6 +97,25 @@ export default function SignupForm() {
           {VERTICAL_OPTIONS.map((v) => (
             <option key={v.value} value={v.value}>
               {v.label}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
+        When would be best for Ch&rsquo;rps to call you?
+        <select
+          name="callWindow"
+          required
+          defaultValue=""
+          className="rounded-[var(--radius-button)] border border-border bg-white px-3 py-2.5 text-sm text-ink focus:border-brand focus:outline-none"
+        >
+          <option value="" disabled>
+            Select one
+          </option>
+          {CALL_WINDOW_OPTIONS.map((w) => (
+            <option key={w.value} value={w.value}>
+              {w.label}
             </option>
           ))}
         </select>
