@@ -1,7 +1,16 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
-import { validateLeadInput, type Lead } from "@/lib/lead";
-import { createZohoLead, splitName } from "@/lib/zoho";
+import { validateLeadInput, CALL_WINDOWS, type Lead } from "@/lib/lead";
+import { createZohoLead, createZohoLeadTask, splitName } from "@/lib/zoho";
+
+/** Business closes for the day around 6pm; after that, push the follow-up task to tomorrow. */
+function nextTaskDueDate(): string {
+  const now = new Date();
+  if (now.getHours() >= 18) {
+    now.setDate(now.getDate() + 1);
+  }
+  return now.toISOString().slice(0, 10);
+}
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -33,9 +42,12 @@ export async function POST(request: Request) {
     );
   }
 
+  const callWindowLabel =
+    CALL_WINDOWS.find((w) => w.value === lead.callWindow)?.label ?? lead.callWindow;
+
   try {
     const { firstName, lastName } = splitName(lead.contactName);
-    await createZohoLead({
+    const leadId = await createZohoLead({
       Last_Name: lastName,
       First_Name: firstName,
       Company: lead.companyName,
@@ -44,6 +56,18 @@ export async function POST(request: Request) {
       Description: [`Type of business: ${lead.vertical}`, lead.notes].filter(Boolean).join("\n\n"),
       Lead_Source: "Website",
     });
+
+    try {
+      await createZohoLeadTask({
+        Subject: `Call ${lead.contactName} — ${lead.companyName}`,
+        Who_Id: leadId,
+        Due_Date: nextTaskDueDate(),
+        Priority: "High",
+        Description: `Preferred call time: ${callWindowLabel}\nPhone: ${lead.phone}\nEmail: ${lead.email}`,
+      });
+    } catch (err) {
+      console.error("Failed to create Zoho follow-up task", err);
+    }
   } catch (err) {
     console.error("Failed to push lead to Zoho CRM", err);
   }
