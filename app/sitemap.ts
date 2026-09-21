@@ -13,6 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/contact",
     "/resources",
+    "/resources/soft-serve-machine-cleaning-checklist",
+    "/resources/one-person-closing-checklist",
+    "/for-multi-unit-operators",
+    "/compare",
+    "/pricing",
   ];
 
   const solutionPaths = SOLUTIONS.map((s) => `/solutions/${s.slug}`);

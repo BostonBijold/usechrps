@@ -5,10 +5,81 @@ export type Solution = {
   intro: string;
   painPoints: string[];
   primary?: boolean;
+  /** Short line under the label on the solutions grid / homepage teaser. */
+  tagline?: string;
+  /** Example lists rendered as a "what your crew taps" preview on the solution page. */
+  sampleLists?: { title: string; tasks: string[] }[];
   image?: { src: string; alt: string };
 };
 
 export const SOLUTIONS: Solution[] = [
+  {
+    slug: "treat-shops",
+    label: "Treat Shops",
+    tagline: "Soft serve, froyo, ice cream, cookies",
+    headline: "Know the machine got cleaned — even when you're not there.",
+    intro:
+      "Soft-serve and froyo machine cleaning, closing checklists, and temp logs, verified with a tap at the machine. Proof for one-person closes, not another camera to watch.",
+    painPoints: [
+      "Closing alone with 15 minutes to reclean the whole shop — and the machine is the first thing to get skipped.",
+      "Watching security cameras from home to find out whether the closer actually did it.",
+      "A 16-year-old crew that turns over constantly, with no manager on the floor to show them the steps.",
+    ],
+    primary: true,
+    sampleLists: [
+      {
+        title: "Machine cleaning",
+        tasks: [
+          "Drain and disassemble machine",
+          "Wash, rinse and sanitize parts",
+          "Sanitizer concentration check",
+          "Reassemble and photo of clean nozzle",
+        ],
+      },
+      {
+        title: "Closing (one-person)",
+        tasks: [
+          "Toppings covered and dated",
+          "Freezer and cold-storage temps logged",
+          "Restroom check",
+          "Cash drop and lock up",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "drink-shops",
+    label: "Drink Shops",
+    tagline: "Soda, coffee, drive-thru",
+    headline: "Every close, every location, verified.",
+    intro:
+      "Ice machine and syrup-line cleaning, opening and closing lists, and restocking — checked in with a tap at the station, across every window you run.",
+    painPoints: [
+      "Opening and closing lists initialed after the fact, or not at all, when one person runs the window.",
+      "Ice machines, syrup lines and dispensers cleaned on the honor system.",
+      "No easy way to see how each location closed last night without calling each manager.",
+    ],
+    sampleLists: [
+      {
+        title: "Opening",
+        tasks: [
+          "Ice machine and bin check",
+          "Syrup and lid stock counted",
+          "Dispenser nozzles cleaned",
+          "Cooler temp logged",
+        ],
+      },
+      {
+        title: "Closing",
+        tasks: [
+          "Dispenser and line cleaning",
+          "Trash and drive-thru area",
+          "Restock cups, lids and syrup",
+          "Lock up and final tap",
+        ],
+      },
+    ],
+  },
   {
     slug: "restaurants",
     label: "Restaurants",
@@ -20,7 +91,6 @@ export const SOLUTIONS: Solution[] = [
       "No proof of who actually did a check, or when — just a paper sheet initialed after the fact.",
       "Paper checklists filled out in a rush at the end of a shift, not in the moment.",
     ],
-    primary: true,
   },
   {
     slug: "gyms",

@@ -5,8 +5,9 @@ import SignupForm from "@/components/SignupForm";
 import Brand from "@/components/Brand";
 
 export const metadata: Metadata = {
-  title: "Sign up",
-  description: "Let's get your team set up with Ch'rps.",
+  title: "Book a walkthrough",
+  description:
+    "Book a short walkthrough of Ch'rps and ask about a pilot at one of your locations.",
 };
 
 export default function SignupPage() {
@@ -14,11 +15,12 @@ export default function SignupPage() {
     <Section>
       <div className="mx-auto max-w-xl">
         <h1 className="font-heading text-4xl font-semibold text-ink">
-          Let&rsquo;s get your team set up.
+          Book a walkthrough.
         </h1>
         <p className="mt-4 text-muted">
-          Tell us a bit about your team and <Brand /> will follow up
-          personally to get you set up. Browsing tag options first?{" "}
+          Tell us a bit about your shop and <Brand /> will follow up
+          personally for a short walkthrough. Want to try it first? Ask
+          about starting with a pilot at one location. Browsing tag options first?{" "}
           <Link href="/store" className="text-brand hover:underline">
             Check out the store
           </Link>

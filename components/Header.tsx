@@ -6,6 +6,9 @@ import Logo from "./Logo";
 import Button from "./Button";
 
 const solutions = [
+  { href: "/solutions/treat-shops", label: "Treat Shops" },
+  { href: "/solutions/drink-shops", label: "Drink Shops" },
+  { href: "/for-multi-unit-operators", label: "Multiple locations" },
   { href: "/solutions/restaurants", label: "Restaurants" },
   { href: "/solutions/gyms", label: "Gyms" },
   { href: "/solutions/labs", label: "Labs" },
@@ -116,7 +119,7 @@ export default function Header() {
             Login
           </Button>
           <Button href="/signup" variant="primary">
-            Get Started
+            Book a walkthrough
           </Button>
         </div>
 
@@ -161,7 +164,7 @@ export default function Header() {
                 Login
               </Button>
               <Button href="/signup" variant="primary">
-                Get Started
+                Book a walkthrough
               </Button>
             </div>
           </nav>

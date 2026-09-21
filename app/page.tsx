@@ -10,11 +10,11 @@ import { SOLUTIONS } from "@/lib/solutions";
 const steps = [
   {
     n: "1",
-    title: "Stick a tag at the station",
+    title: "Stick a tag on the machine",
     body: (
       <>
-        A <Brand /> NFC tag goes wherever the check happens — the walk-in,
-        the register, the front desk.
+        A <Brand /> NFC tag goes wherever the check happens — the soft-serve
+        machine, the walk-in, the register, the drive-thru window.
       </>
     ),
     image: "/images/howto1.jpeg",
@@ -22,17 +22,58 @@ const steps = [
   },
   {
     n: "2",
-    title: "Staff taps to mark it complete",
-    body: "A tap with their own phone, already in their pocket — no separate device, no shared login.",
+    title: "Your closer taps to prove it",
+    body: "A tap with their own phone, already in their pocket — no separate device, no shared login, no training deck.",
     image: "/images/howto2.jpeg",
     alt: "A staff member tapping their phone on a Ch'rps NFC tag in the kitchen",
   },
   {
     n: "3",
-    title: "Managers see real-time proof",
-    body: "Timestamped, by whom, where, and when — as it happens, not reconstructed at the end of a shift.",
+    title: "You see it from anywhere",
+    body: "Timestamped, by whom, where, and when — as it happens. No more watching the cameras to find out.",
     image: "/images/howto3.jpeg",
     alt: "The Ch'rps app showing a real-time checklist of completed and pending tasks",
+  },
+];
+
+const problems = [
+  {
+    icon: "clock",
+    title: "Closing alone",
+    body: "A short window to reclean the whole shop, by yourself. Something gets skipped — and you find out later.",
+  },
+  {
+    icon: "clipboard-list",
+    title: "The machine gets skipped",
+    body: "Soft-serve and froyo machine cleaning runs on the honor system. It's the task most likely to be missed, and a common trouble spot at inspections.",
+  },
+  {
+    icon: "users",
+    title: "Watching the cameras",
+    body: "Owners and managers end up checking security footage from home just to know whether the job got done.",
+  },
+];
+
+const trustPoints = [
+  {
+    icon: "clipboard-list",
+    title: "Timestamped, per-person records",
+    body: "Every task logs who completed it, when, and — for form tasks — the reading they entered, like a cooler temperature.",
+  },
+  {
+    icon: "nfc",
+    title: "A tap, not a checkbox",
+    body: "The person has to be at the machine to complete the task. A required completion photo can be added for the ones that matter most.",
+  },
+  {
+    icon: "bar-chart",
+    title: "Signals when a list is being rubber-stamped",
+    body: "Reports flag checklists being completed suspiciously fast, so a tap that meant nothing doesn't go unnoticed.",
+  },
+  {
+    icon: "receipt",
+    title: "An export ready for the inspector",
+    body: "Pull your completion history, readings and notes into one file for a health inspector, an insurer, or corporate.",
   },
 ];
 
@@ -43,16 +84,19 @@ export default function Home() {
       <Section>
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
+            <p className="font-data mb-3 text-xs uppercase tracking-wide text-brand">
+              For soft-serve, froyo, soda and coffee shops
+            </p>
             <h1 className="font-heading text-4xl font-semibold leading-tight text-ink md:text-5xl">
-              Checklists, trusted every time.
+              Know the machine got cleaned — even when you&rsquo;re not there.
             </h1>
             <p className="mt-5 max-w-lg text-lg text-muted">
-              <Brand /> verifies that the right person completes the right
-              task, in the right place, at the right time — no more guessing
-              whether your checklist actually got done.
+              <Brand /> proves your closer did the job with a tap on a tag. No
+              cameras to watch, no checkbox to fake — just timestamped proof
+              of who did what, where, and when.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/signup">Get Started</Button>
+              <Button href="/signup">Book a walkthrough</Button>
               <Button href="/features" variant="secondary">
                 See how it works
               </Button>
@@ -60,7 +104,7 @@ export default function Home() {
           </div>
           <Image
             src="/images/homepage-hero.jpeg"
-            alt="A restaurant staff member tapping their phone on a Ch'rps NFC tag to check a walk-in freezer"
+            alt="A staff member tapping their phone on a Ch'rps NFC tag to check a walk-in freezer"
             width={734}
             height={1456}
             className="aspect-[4/3] w-full rounded-[var(--radius-card)] object-cover"
@@ -69,8 +113,35 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* How it works */}
+      {/* The closing problem */}
       <Section bg="bg-card">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-heading text-3xl font-semibold text-ink">
+            One person. One close. Nobody checking.
+          </h2>
+          <p className="mt-3 text-muted">
+            Small shops run on teen crews, thin staffing and closers who work
+            alone. The work that matters most is the work nobody sees.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {problems.map((p) => (
+            <div
+              key={p.title}
+              className="rounded-[var(--radius-card)] border border-border bg-white p-6"
+            >
+              <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-card text-brand">
+                <AppIcon name={p.icon} size={22} />
+              </span>
+              <h3 className="text-base font-semibold text-ink">{p.title}</h3>
+              <p className="mt-2 text-sm text-muted">{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* How it works */}
+      <Section>
         <h2 className="font-heading text-center text-3xl font-semibold text-ink">
           How it works
         </h2>
@@ -94,20 +165,34 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* More than a checklist */}
-      <Section>
+      {/* Inspection ready */}
+      <Section bg="bg-card">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
             <h2 className="font-heading text-3xl font-semibold text-ink">
-              Built for real operations, not just checkboxes.
+              Ready when the inspector walks in.
             </h2>
             <p className="mt-5 text-muted">
-              Task verification and Par Sheets are the foundation.
-              Clock-in/clock-out and other operational tools are on the
-              roadmap — <Brand /> is built to grow into the rest of how a
-              physical-operations business actually runs, not stay a
-              single-purpose checklist app.
+              Tell the inspector what happened, and show them. <Brand /> keeps
+              an honest, timestamped record of cleaning cycles, temperature
+              readings and closing lists — and the follow-up when something
+              was out of range.
             </p>
+            <ul className="mt-6 space-y-4">
+              {trustPoints.map((t) => (
+                <li key={t.title} className="flex items-start gap-3">
+                  <AppIcon
+                    name={t.icon}
+                    size={20}
+                    className="mt-0.5 shrink-0 text-brand"
+                  />
+                  <span className="text-sm text-muted">
+                    <span className="font-semibold text-ink">{t.title}.</span>{" "}
+                    {t.body}
+                  </span>
+                </li>
+              ))}
+            </ul>
             <div className="mt-6 flex flex-wrap gap-2">
               <TaskStatePill state="done" />
               <TaskStatePill state="rest" />
@@ -121,13 +206,12 @@ export default function Home() {
             width={788}
             height={1336}
             className="mx-auto w-full max-w-xs rounded-[var(--radius-card)] object-contain"
-            priority
           />
         </div>
       </Section>
 
       {/* Par Sheet */}
-      <Section bg="bg-card">
+      <Section>
         <div className="grid items-center gap-12 md:grid-cols-2">
           <Image
             src="/images/inventory.png"
@@ -138,7 +222,7 @@ export default function Home() {
           />
           <div>
             <h2 className="font-heading text-3xl font-semibold text-ink">
-              Know what&rsquo;s running low, before it&rsquo;s out.
+              Cups, lids and toppings — counted before they run out.
             </h2>
             <p className="mt-5 text-muted">
               A top-up count tracker for par levels — someone looks, someone
@@ -201,16 +285,17 @@ export default function Home() {
       */}
 
       {/* Vertical teaser */}
-      <Section>
+      <Section bg="bg-card">
         <div className="text-center">
           <h2 className="font-heading text-3xl font-semibold text-ink">
-            Built first for restaurants.
+            Built for shops that close with one person.
           </h2>
           <p className="mt-3 text-muted">
-            Built for gyms and labs too.
+            Treat and drink shops first — and it works the same for
+            restaurants, gyms and labs.
           </p>
         </div>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {SOLUTIONS.map((s) => (
             <Link
               key={s.slug}
@@ -220,9 +305,14 @@ export default function Home() {
               <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-card text-brand">
                 <AppIcon name={s.slug} size={26} />
               </span>
-              <span className="text-sm font-semibold text-ink group-hover:text-brand">
+              <span className="block text-sm font-semibold text-ink group-hover:text-brand">
                 {s.label}
               </span>
+              {s.tagline && (
+                <span className="mt-1 block text-xs text-muted">
+                  {s.tagline}
+                </span>
+              )}
             </Link>
           ))}
         </div>
@@ -233,14 +323,33 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* Multi-location */}
+      <Section>
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-heading text-3xl font-semibold text-ink">
+            Running more than one location?
+          </h2>
+          <p className="mt-3 text-muted">
+            Priced per location, not per employee — so a crew that turns over
+            every few months never changes your bill. Same checklists at every
+            store, one view of how each one closed.
+          </p>
+          <div className="mt-6">
+            <Button href="/for-multi-unit-operators" variant="secondary">
+              For multi-unit operators
+            </Button>
+          </div>
+        </div>
+      </Section>
+
       {/* Footer CTA */}
       <Section bg="bg-brand" className="text-center">
         <h2 className="font-heading text-3xl font-semibold text-white">
-          Ready to trust your checklists again?
+          Ready to stop wondering if it got done?
         </h2>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button href="/signup" variant="inverse">
-            Get Started
+            Book a walkthrough
           </Button>
           <Button href="/store" variant="inverse-ghost">
             Browse tags

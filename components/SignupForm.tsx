@@ -4,12 +4,27 @@ import { useState, type FormEvent } from "react";
 import Link from "next/link";
 
 const VERTICAL_OPTIONS = [
+  { value: "treat-shop", label: "Treat shop (soft serve, froyo, ice cream, cookies)" },
+  { value: "drink-shop", label: "Drink shop (soda, coffee, drive-thru)" },
   { value: "restaurant", label: "Restaurant" },
   { value: "gym", label: "Gym" },
   { value: "lab", label: "Lab" },
   // Hidden for now — not ready for production. Keep for when it comes back.
   // { value: "hotel", label: "Hotel" },
   { value: "other", label: "Other" },
+];
+
+const LOCATION_OPTIONS = [
+  { value: "1", label: "1 location" },
+  { value: "2-5", label: "2–5 locations" },
+  { value: "6-20", label: "6–20 locations" },
+  { value: "20+", label: "More than 20" },
+];
+
+const CLOSER_OPTIONS = [
+  { value: "one-person", label: "One person closes alone" },
+  { value: "two-plus", label: "Two or more close together" },
+  { value: "manager", label: "A manager is always on site" },
 ];
 
 const CALL_WINDOW_OPTIONS = [
@@ -101,6 +116,39 @@ export default function SignupForm() {
           ))}
         </select>
       </label>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+      <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
+        How many locations?
+        <select
+          name="locations"
+          defaultValue=""
+          className="rounded-[var(--radius-button)] border border-border bg-white px-3 py-2.5 text-sm text-ink focus:border-brand focus:outline-none"
+        >
+          <option value="">Select one</option>
+          {LOCATION_OPTIONS.map((o) => (
+            <option key={o.value} value={o.value}>
+              {o.label}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
+        Who closes today?
+        <select
+          name="closerSetup"
+          defaultValue=""
+          className="rounded-[var(--radius-button)] border border-border bg-white px-3 py-2.5 text-sm text-ink focus:border-brand focus:outline-none"
+        >
+          <option value="">Select one</option>
+          {CLOSER_OPTIONS.map((o) => (
+            <option key={o.value} value={o.value}>
+              {o.label}
+            </option>
+          ))}
+        </select>
+      </label>
+      </div>
 
       <label className="flex flex-col gap-1.5 text-sm font-medium text-ink">
         When would be best for Ch&rsquo;rps to call you?
