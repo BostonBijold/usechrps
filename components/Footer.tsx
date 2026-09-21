@@ -26,6 +26,7 @@ export default function Footer() {
               <ul className="flex flex-col gap-2 text-sm">
                 <li><Link href="/features" className="hover:text-brand">Features</Link></li>
                 <li><Link href="/solutions" className="hover:text-brand">Solutions</Link></li>
+                <li><Link href="/time-tracking" className="hover:text-brand">Time clock</Link></li>
                 <li><Link href="/for-multi-unit-operators" className="hover:text-brand">Multiple locations</Link></li>
                 <li><Link href="/compare" className="hover:text-brand">Tap vs. checkbox</Link></li>
                 <li><Link href="/store" className="hover:text-brand">Store</Link></li>

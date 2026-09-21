@@ -251,6 +251,29 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* Time clock */}
+      <Section bg="bg-card">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-brand">
+            <AppIcon name="clock" size={24} />
+          </span>
+          <h2 className="font-heading text-3xl font-semibold text-ink">
+            Clock in with the same tap.
+          </h2>
+          <p className="mt-3 text-muted">
+            Staff punch in and out on their own phone at your location&rsquo;s
+            clock tag. You get weekly hours per person, regular and overtime,
+            and a CSV to take to your payroll provider — hours only, not a
+            payroll system.
+          </p>
+          <div className="mt-6">
+            <Button href="/time-tracking" variant="secondary">
+              See the time clock
+            </Button>
+          </div>
+        </div>
+      </Section>
+
       {/* Verification / MFA-by-presence — hidden, not ready for production
       <Section>
         <div className="grid items-center gap-12 md:grid-cols-2">
@@ -285,7 +308,7 @@ export default function Home() {
       */}
 
       {/* Vertical teaser */}
-      <Section bg="bg-card">
+      <Section>
         <div className="text-center">
           <h2 className="font-heading text-3xl font-semibold text-ink">
             Built for shops that close with one person.
@@ -324,7 +347,7 @@ export default function Home() {
       </Section>
 
       {/* Multi-location */}
-      <Section>
+      <Section bg="bg-card">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-heading text-3xl font-semibold text-ink">
             Running more than one location?

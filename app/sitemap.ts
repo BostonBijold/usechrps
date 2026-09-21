@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/resources/one-person-closing-checklist",
     "/for-multi-unit-operators",
     "/compare",
+    "/time-tracking",
     "/pricing",
   ];
 
