@@ -10,8 +10,9 @@ const solutions = [
   { href: "/solutions/drink-shops", label: "Drink Shops" },
   { href: "/for-multi-unit-operators", label: "Multiple locations" },
   { href: "/solutions/restaurants", label: "Restaurants" },
-  { href: "/solutions/gyms", label: "Gyms" },
-  { href: "/solutions/labs", label: "Labs" },
+  // Hidden for now — keep for when they come back.
+  // { href: "/solutions/gyms", label: "Gyms" },
+  // { href: "/solutions/labs", label: "Labs" },
   // Hidden for now — not ready for production. Keep for when it comes back.
   // { href: "/solutions/hotels", label: "Hotels" },
 ];

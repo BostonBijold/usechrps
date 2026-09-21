@@ -292,10 +292,10 @@ export default function Home() {
           </h2>
           <p className="mt-3 text-muted">
             Treat and drink shops first — and it works the same for
-            restaurants, gyms and labs.
+            restaurants too.
           </p>
         </div>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {SOLUTIONS.map((s) => (
             <Link
               key={s.slug}

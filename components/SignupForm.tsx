@@ -7,8 +7,9 @@ const VERTICAL_OPTIONS = [
   { value: "treat-shop", label: "Treat shop (soft serve, froyo, ice cream, cookies)" },
   { value: "drink-shop", label: "Drink shop (soda, coffee, drive-thru)" },
   { value: "restaurant", label: "Restaurant" },
-  { value: "gym", label: "Gym" },
-  { value: "lab", label: "Lab" },
+  // Hidden for now — keep for when they come back.
+  // { value: "gym", label: "Gym" },
+  // { value: "lab", label: "Lab" },
   // Hidden for now — not ready for production. Keep for when it comes back.
   // { value: "hotel", label: "Hotel" },
   { value: "other", label: "Other" },

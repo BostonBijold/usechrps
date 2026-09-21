@@ -92,38 +92,39 @@ export const SOLUTIONS: Solution[] = [
       "Paper checklists filled out in a rush at the end of a shift, not in the moment.",
     ],
   },
-  {
-    slug: "gyms",
-    label: "Gyms",
-    headline: "Trusted checklists for every shift, built for gyms.",
-    intro:
-      "Equipment checks, cleaning rounds, and front-desk tasks — verified as they happen, not assumed.",
-    painPoints: [
-      "Equipment checks that get skipped when the floor is busy.",
-      "No record of who checked a piece of equipment or cleaned a station.",
-      "Front-desk and locker-room readiness left to memory between shifts.",
-    ],
-    image: {
-      src: "/images/tredmil.jpeg",
-      alt: "A treadmill on a gym floor",
-    },
-  },
-  {
-    slug: "labs",
-    label: "Labs",
-    headline: "Trusted checklists for every shift, built for labs.",
-    intro:
-      "Compliance logging and equipment checks — verified in place, with a record that holds up.",
-    painPoints: [
-      "Compliance logging that's reconstructed after the fact instead of captured in the moment.",
-      "No proof of who performed a required check, or when.",
-      "Equipment and station readiness tracked on paper, disconnected from the actual schedule.",
-    ],
-    image: {
-      src: "/images/lab.jpeg",
-      alt: "A lab technician working at a lab bench",
-    },
-  },
+  // Hidden for now — keep Gyms and Labs for when they come back.
+  //   {
+  //     slug: "gyms",
+  //     label: "Gyms",
+  //     headline: "Trusted checklists for every shift, built for gyms.",
+  //     intro:
+  //       "Equipment checks, cleaning rounds, and front-desk tasks — verified as they happen, not assumed.",
+  //     painPoints: [
+  //       "Equipment checks that get skipped when the floor is busy.",
+  //       "No record of who checked a piece of equipment or cleaned a station.",
+  //       "Front-desk and locker-room readiness left to memory between shifts.",
+  //     ],
+  //     image: {
+  //       src: "/images/tredmil.jpeg",
+  //       alt: "A treadmill on a gym floor",
+  //     },
+  //   },
+  //   {
+  //     slug: "labs",
+  //     label: "Labs",
+  //     headline: "Trusted checklists for every shift, built for labs.",
+  //     intro:
+  //       "Compliance logging and equipment checks — verified in place, with a record that holds up.",
+  //     painPoints: [
+  //       "Compliance logging that's reconstructed after the fact instead of captured in the moment.",
+  //       "No proof of who performed a required check, or when.",
+  //       "Equipment and station readiness tracked on paper, disconnected from the actual schedule.",
+  //     ],
+  //     image: {
+  //       src: "/images/lab.jpeg",
+  //       alt: "A lab technician working at a lab bench",
+  //     },
+  //   },
   // Hidden for now — not ready for production. Keep for when it comes back.
   // {
   //   slug: "hotels",
