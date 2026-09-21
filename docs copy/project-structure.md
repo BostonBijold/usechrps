@@ -1,3 +1,5 @@
+> **Reference copy from the chrps.app product repo (snapshot, not maintained here).** Describes the product, not the usechrps.com marketing site; the instruction below applies to the product repo only.
+
 > **Keep this file updated after any code change in this area — do not let it drift from actual implementation.**
 
 # Project Structure

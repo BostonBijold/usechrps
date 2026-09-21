@@ -1,5 +1,11 @@
 # Ch'rps Marketing Site — usechrps.com
 
+> **Status note (2026-09-21):** This is the original launch handoff spec
+> and is no longer kept current. The site has since gained `/pricing`
+> (9 pages total), Zoho CRM lead sync, and the Brand Guide visual
+> identity (replacing the jackalope/parchment description below); the
+> hotels vertical is disabled. See `README.md` for the current state.
+
 > Handoff doc for Claude Code. Goal: stand up the bare-bones multi-page
 > structure now, with real copy where we have it and clear placeholders
 > where we don't, so the site is live and indexable by search engines
