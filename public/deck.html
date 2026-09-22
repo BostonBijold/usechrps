@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ch'rps — Prove the work got done</title>
+<title>Ch'rps — Proof the machine got cleaned and the shop got closed</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -291,6 +291,17 @@
   .crow:not(.head) > div:nth-child(2){ color:var(--ink-faint); }
   .crow:not(.head) > div:nth-child(3){ color:var(--green); font-weight:600; }
 
+  /* Slide 6b — Verticals (Treat Shops / Drink Shops) */
+  .vert-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:28px; margin-top:40px; }
+  .vert-card{ border:1px solid var(--line); border-radius:2px; background:#fff; padding:28px; }
+  .vert-card .vlabel{ font-family:'Oswald',sans-serif; font-weight:600; font-size:21px; color:var(--ink); }
+  .vert-card .vtag{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--blue-deep); margin-top:4px; }
+  .vert-card .vheadline{ font-size:15px; color:var(--ink-soft); line-height:1.55; margin-top:14px; }
+  .vert-card .vtasks-title{ font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.4px; margin-top:20px; padding-top:16px; border-top:1px solid var(--line-soft); }
+  .vert-card .vtasks{ list-style:none; margin:12px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .vert-card .vtasks li{ font-size:13.5px; color:var(--ink-soft); display:flex; gap:8px; align-items:flex-start; }
+  .vert-card .vtasks li::before{ content:"\2713"; color:var(--green); flex-shrink:0; }
+
   /* Slide 6 — Founder credibility */
   .s-founder .grid{ display:grid; grid-template-columns: 0.85fr 1.15fr; gap:70px; align-items:center; }
   .s-founder .imgspot{ aspect-ratio:4/5; }
@@ -320,6 +331,7 @@
     }
     .steps{ grid-template-columns:1fr; }
     .feat-grid{ grid-template-columns:1fr; }
+    .vert-grid{ grid-template-columns:1fr; }
     .crow{ grid-template-columns: 1.2fr 1fr 1fr; }
     .crow > div{ padding:12px 14px; font-size:13px; }
     .nav-btn{ width:38px; height:38px; }
@@ -352,7 +364,7 @@
       <div class="hero-copy">
         <img class="hero-mark" src="/brand/chrps-mark.png" alt="" />
         <h1 class="hero-wordmark">Ch&rsquo;rps</h1>
-        <h2 class="hero-tagline">Checklists trusted every time.</h2>
+        <h2 class="hero-tagline">Know the machine got cleaned — even when you're not there.</h2>
       </div>
       <img class="hero-phone" src="/images/checklists.png" alt="Ch'rps checklist screen on a phone" />
     </div>
@@ -362,15 +374,15 @@
   <section class="slide s-title">
     <div class="slide-inner grid">
       <div>
-        <div class="tag">Built for restaurant operations</div>
-        <h1>Prove the work got done.</h1>
-        <p class="lead">Ch'rps replaces paper checklists and self-reported apps with a single tap that only counts when your team is standing at the actual spot — the walk-in, the fryer, the restroom.</p>
+        <div class="tag">For soft-serve, froyo, soda and coffee shops</div>
+        <h1>Prove the close got done.</h1>
+        <p class="lead">Ch'rps proves your closer did the job with a tap on a tag. No cameras to watch, no checkbox to fake — just timestamped proof of who did what, where, and when.</p>
         <div class="cta-row">
-          <button class="btn primary">See a live demo</button>
-          <button class="btn ghost">How it works</button>
+          <button class="btn primary">Book a walkthrough</button>
+          <button class="btn ghost">See how it works</button>
         </div>
       </div>
-      <img class="imgspot photo" src="/images/homepage-hero.jpeg" alt="A staff member tapping their phone to an NFC tag mounted on a walk-in cooler" />
+      <img class="imgspot photo" src="/images/homepage-hero.jpeg" alt="A staff member tapping their phone on a Ch'rps NFC tag to check a walk-in freezer" />
     </div>
   </section>
 
@@ -379,30 +391,30 @@
     <div class="slide-inner grid">
       <div>
         <div class="tag">The problem</div>
-        <h2 style="font-size:clamp(28px,3.6vw,42px);">Checklists nobody can actually trust</h2>
+        <h2 style="font-size:clamp(28px,3.6vw,42px);">One person. One close. Nobody checking.</h2>
         <ul class="prob-list">
-          <li><span class="num">01</span>Paper logs get filled out all at once at the end of a shift — not when the work happened.</li>
-          <li><span class="num">02</span>Self-reported apps can be checked off from the break room, the parking lot, or home.</li>
-          <li><span class="num">03</span>When a health inspector or a corporate auditor asks for proof, there isn't any.</li>
-          <li><span class="num">04</span>Managers find out a task was missed only after something's already gone wrong.</li>
+          <li><span class="num">01</span>Closing alone with fifteen minutes to reclean the whole shop — and the machine is the first thing to get skipped.</li>
+          <li><span class="num">02</span>Soft-serve and froyo machine cleaning runs on the honor system, and it's a common trouble spot at inspections.</li>
+          <li><span class="num">03</span>Owners end up watching security cameras from home just to know whether the job got done.</li>
+          <li><span class="num">04</span>A teen crew that turns over constantly, with no manager on the floor to show them the steps.</li>
         </ul>
       </div>
-      <div class="imgspot">Photo: a stack of paper checklists on a clipboard, or a blank/incomplete log sheet</div>
+      <div class="imgspot">Photo: a closer alone at night wiping down a soft-serve machine, shop lights dimmed</div>
     </div>
   </section>
 
   <!-- 4. SOLUTION -->
   <section class="slide s-solution">
     <div class="slide-inner grid">
-      <img class="imgspot photo" src="/images/howto1.jpeg" alt="Close-up of an NFC tag mounted on a prep cooler" />
+      <img class="imgspot photo" src="/images/howto1.jpeg" alt="A Ch'rps NFC tag stuck to the door of a walk-in cooler" />
       <div>
         <div class="tag">The solution</div>
-        <h2 style="font-size:clamp(28px,3.6vw,42px);">Verification that's locked to the location</h2>
-        <p class="lead">A small NFC tag goes wherever the task actually happens. Staff tap their phone to complete it — the tap can't register from anywhere else. Every entry is timestamped and tied to that exact spot, automatically.</p>
+        <h2 style="font-size:clamp(28px,3.6vw,42px);">Verification that's locked to the machine</h2>
+        <p class="lead">A small NFC tag goes on the machine, the cooler, the register — wherever the check actually happens. Your closer taps their own phone to complete it, and the tap can't register from anywhere else. Every entry is timestamped and tied to that exact spot, automatically.</p>
         <div class="fact-strip">
-          <div class="fact"><div class="n">1 tap</div><div class="l">to complete a task, no app hunting</div></div>
-          <div class="fact"><div class="n">0</div><div class="l">ways to fake a location</div></div>
-          <div class="fact"><div class="n">Live</div><div class="l">manager visibility, not end-of-shift</div></div>
+          <div class="fact"><div class="n">1 tap</div><div class="l">with their own phone, no shared login</div></div>
+          <div class="fact"><div class="n">0</div><div class="l">ways to fake being at the machine</div></div>
+          <div class="fact"><div class="n">Live</div><div class="l">visibility from anywhere, not end-of-shift</div></div>
         </div>
       </div>
     </div>
@@ -416,75 +428,110 @@
       <div class="steps">
         <div class="step">
           <div class="stepnum">Step 01</div>
-          <h3>Place a tag</h3>
-          <p>Stick an NFC tag at the walk-in, the handwash sink, the fryer — wherever the task lives.</p>
+          <h3>Stick a tag on the machine</h3>
+          <p>A Ch'rps NFC tag goes wherever the check happens — the soft-serve machine, the walk-in, the register, the drive-thru window.</p>
           <img class="imgspot photo" src="/images/stickers.jpeg" alt="Ch'rps branded NFC tag stickers" />
         </div>
         <div class="step">
           <div class="stepnum">Step 02</div>
-          <h3>Staff tap to complete</h3>
-          <p>Employees tap their phone against the tag when the task is done. No app to dig for, no login to remember.</p>
-          <img class="imgspot photo" src="/images/howto2.jpeg" alt="Employee's phone touching an NFC tag, app screen visible" />
+          <h3>Your closer taps to prove it</h3>
+          <p>A tap with their own phone, already in their pocket — no separate device, no shared login, no training deck.</p>
+          <img class="imgspot photo" src="/images/howto2.jpeg" alt="A staff member tapping their phone on a Ch'rps NFC tag in the kitchen" />
         </div>
         <div class="step">
           <div class="stepnum">Step 03</div>
-          <h3>Managers see it live</h3>
-          <p>Every tap lands in a running log — who, where, and exactly when — visible from the console in real time.</p>
-          <img class="imgspot photo" src="/images/howto3.jpeg" alt="Manager viewing the task log on their phone" />
+          <h3>You see it from anywhere</h3>
+          <p>Timestamped, by whom, where, and when — as it happens. No more watching the cameras to find out.</p>
+          <img class="imgspot photo" src="/images/howto3.jpeg" alt="The Ch'rps app showing a real-time checklist of completed and pending tasks" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 6. COMPARISON -->
+  <!-- 6. VERTICALS -->
+  <section class="slide tint">
+    <div class="slide-inner">
+      <div class="tag">Two shop types, one wedge</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);">Built for treat shops and drink shops first</h2>
+      <p class="lead" style="margin-top:14px;">Different equipment, same problem: a lone closer, a machine that's easy to skip, and no one checking until it's too late.</p>
+      <div class="vert-grid">
+        <div class="vert-card">
+          <div class="vlabel">Treat Shops</div>
+          <div class="vtag">Soft serve, froyo, ice cream, cookies</div>
+          <p class="vheadline">Know the machine got cleaned — even when you're not there. Verified with a tap at the machine, not another camera to watch.</p>
+          <div class="vtasks-title">Machine cleaning</div>
+          <ul class="vtasks">
+            <li>Drain and disassemble machine</li>
+            <li>Wash, rinse and sanitize parts</li>
+            <li>Sanitizer concentration check</li>
+            <li>Reassemble and photo of clean nozzle</li>
+          </ul>
+        </div>
+        <div class="vert-card">
+          <div class="vlabel">Drink Shops</div>
+          <div class="vtag">Soda, coffee, drive-thru</div>
+          <p class="vheadline">Every close, every location, verified. Ice machine and syrup-line cleaning checked in with a tap at the station.</p>
+          <div class="vtasks-title">Closing</div>
+          <ul class="vtasks">
+            <li>Dispenser and line cleaning</li>
+            <li>Trash and drive-thru area</li>
+            <li>Restock cups, lids and syrup</li>
+            <li>Lock up and final tap</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. COMPARISON -->
   <section class="slide">
     <div class="slide-inner">
       <div class="tag">Why it's different</div>
       <h2 style="font-size:clamp(28px,3.6vw,42px);">Not another checkbox app</h2>
-      <p class="lead" style="margin-top:14px;">Most task apps ask your team to self-report. Ch'rps asks the location to confirm it.</p>
+      <p class="lead" style="margin-top:14px;">Most task apps ask your team to self-report. Ch'rps asks the machine to confirm it.</p>
       <div class="compare">
         <div class="crow head"><div>What happens</div><div>Self-reported apps</div><div>Ch'rps</div></div>
-        <div class="crow"><div>Task marked complete</div><div>From anywhere</div><div>Only at the tagged spot</div></div>
+        <div class="crow"><div>Task marked complete</div><div>From anywhere</div><div>Only at the tagged machine</div></div>
         <div class="crow"><div>Proof for an inspector</div><div>A checkbox and a name</div><div>Time-stamped, location-locked log</div></div>
         <div class="crow"><div>Missed task alerts</div><div>Usually after the fact</div><div>Flagged as it happens</div></div>
-        <div class="crow"><div>Setup for staff</div><div>Accounts, logins, training</div><div>Tap and go</div></div>
+        <div class="crow"><div>Pricing</div><div>Per employee seat</div><div>Flat, per location</div></div>
       </div>
     </div>
   </section>
 
-  <!-- 7. FOUNDER -->
+  <!-- 8. FOUNDER -->
   <section class="slide tint s-founder">
     <div class="slide-inner grid">
-      <div class="imgspot">Photo: founder portrait, ideally in a kitchen/restaurant setting</div>
+      <div class="imgspot">Photo: founder portrait, ideally at a shop counter or soft-serve machine</div>
       <div>
         <div class="tag">Built by someone who's worked the line</div>
-        <p class="quote">"I've run these shifts myself. I built Ch'rps because I know exactly where paper checklists fall apart — and exactly what a manager actually needs to see."</p>
-        <p class="lead" style="margin-top:24px;">Ch'rps is built by a food-service veteran turned software engineer, designed around how restaurants really operate — not a generic task-tracking template.</p>
+        <p class="quote">"I've run these shifts myself. I built Ch'rps because I know exactly where the honor system breaks down — and exactly what an owner actually needs to see."</p>
+        <p class="lead" style="margin-top:24px;">Ch'rps is built by a food-service veteran turned software engineer, designed around how a small shop with a teen crew actually closes — not a generic task-tracking template.</p>
       </div>
     </div>
   </section>
 
-  <!-- 8. FEATURES -->
+  <!-- 9. FEATURES -->
   <section class="slide">
     <div class="slide-inner">
       <div class="tag">What you get</div>
       <h2 style="font-size:clamp(28px,3.6vw,42px);">More than tap verification</h2>
       <div class="feat-grid">
-        <div class="feat"><h3>Task lists & checklists</h3><p>Build recurring or one-time task lists for opening, closing, and every shift in between.</p></div>
-        <div class="feat"><h3>Photo instructions</h3><p>Attach reference photos and steps so any employee — new or seasoned — knows exactly what "done" looks like.</p></div>
-        <div class="feat"><h3>Inventory counts</h3><p>Simple top-up counting that matches how your team already checks stock, no ledger math.</p></div>
-        <div class="feat"><h3>Reports & alerts</h3><p>See trends over time and catch missed tasks before they become a bigger problem.</p></div>
+        <div class="feat"><h3>Machine cleaning & closing lists</h3><p>Recurring checklists for machine cleaning, temp logs, and one-person opens and closes.</p></div>
+        <div class="feat"><h3>Photo instructions</h3><p>Attach reference photos and steps so any crew member — new or seasoned — knows exactly what "done" looks like.</p></div>
+        <div class="feat"><h3>Inspection-ready export</h3><p>Pull completion history, readings and notes into one file for a health inspector, an insurer, or corporate.</p></div>
+        <div class="feat"><h3>Every location, one view</h3><p>See how each shop closed last night without calling each manager — built for multi-unit operators.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- 9. CTA -->
+  <!-- 10. CTA -->
   <section class="slide tint s-cta">
     <div class="slide-inner grid">
       <div>
         <div class="tag">Get started</div>
-        <h1>See it running in your kitchen.</h1>
-        <p class="lead">We'll bring a tag, tap it live on your equipment, and show you what your managers would see the next morning. No commitment, fifteen minutes.</p>
+        <h1>See it running in your shop.</h1>
+        <p class="lead">We'll bring a tag, tap it live on your machine, and show you what you'd see the next morning. No commitment, fifteen minutes.</p>
         <div class="contact-block">
           <a href="mailto:sales@usechrps.com">sales@usechrps.com</a>
           <a href="https://usechrps.com">usechrps.com</a>
