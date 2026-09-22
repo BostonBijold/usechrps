@@ -6,6 +6,8 @@ import PlaceholderImage from "@/components/PlaceholderImage";
 import FeatureCard from "@/components/FeatureCard";
 import AppIcon from "@/components/AppIcon";
 import Button from "@/components/Button";
+import Brand from "@/components/Brand";
+import TaskStatePill from "@/components/TaskStatePill";
 import { SOLUTIONS, getSolution } from "@/lib/solutions";
 import { FEATURES } from "@/lib/features";
 
@@ -53,8 +55,11 @@ export default async function SolutionPage({
               {solution.headline}
             </h1>
             <p className="mt-5 text-lg text-muted">{solution.intro}</p>
-            <div className="mt-8">
-              <Button href="/signup">Get Started</Button>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href="/signup">Book a walkthrough</Button>
+              <Button href="/pricing" variant="secondary">
+                See pricing
+              </Button>
             </div>
           </div>
           {solution.image ? (
@@ -90,7 +95,58 @@ export default async function SolutionPage({
         </ul>
       </Section>
 
-      <Section>
+      {solution.sampleLists && (
+        <Section>
+          <h2 className="font-heading text-2xl font-semibold text-ink">
+            What your crew taps.
+          </h2>
+          <p className="mt-3 max-w-2xl text-muted">
+            Example lists — build your own in minutes. Each task can be tied
+            to an NFC tag at the station, with step-by-step instructions and
+            an optional required photo.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {solution.sampleLists.map((list) => (
+              <div
+                key={list.title}
+                className="rounded-[var(--radius-card)] border border-border bg-white p-6"
+              >
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-ink">
+                    {list.title}
+                  </h3>
+                  <TaskStatePill state="pending" />
+                </div>
+                <ul className="mt-4 space-y-3">
+                  {list.tasks.map((t) => (
+                    <li
+                      key={t}
+                      className="flex items-center gap-3 text-sm text-muted"
+                    >
+                      <span
+                        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border text-brand"
+                        aria-hidden="true"
+                      >
+                        <AppIcon name="nfc" size={12} />
+                      </span>
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-muted">
+            Sample lists are a starting point. Follow your local health code
+            and your equipment manufacturer&rsquo;s cleaning instructions.
+          </p>
+        </Section>
+      )}
+
+      <Section
+        bg={solution.sampleLists ? "bg-card" : "bg-white"}
+        tightTop={!solution.sampleLists}
+      >
         <h2 className="font-heading text-2xl font-semibold text-ink">
           Everything you need, verified.
         </h2>
@@ -100,7 +156,10 @@ export default async function SolutionPage({
           ))}
         </div>
         <div className="mt-12 text-center">
-          <Button href="/signup">Get Started</Button>
+          <Button href="/signup">Book a walkthrough</Button>
+          <p className="mt-3 text-sm text-muted">
+            <Brand /> is priced per location, not per employee.
+          </p>
         </div>
       </Section>
     </>

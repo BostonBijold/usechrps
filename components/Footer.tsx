@@ -11,10 +11,10 @@ export default function Footer() {
           <div className="max-w-sm">
             <Logo />
             <p className="mt-3 text-sm text-muted">
-              Checklists trusted every time.
+              Proof the job got done — with a tap, not a checkbox.
             </p>
             <div className="mt-5">
-              <Button href="/signup">Get Started</Button>
+              <Button href="/signup">Book a walkthrough</Button>
             </div>
           </div>
 
@@ -26,6 +26,9 @@ export default function Footer() {
               <ul className="flex flex-col gap-2 text-sm">
                 <li><Link href="/features" className="hover:text-brand">Features</Link></li>
                 <li><Link href="/solutions" className="hover:text-brand">Solutions</Link></li>
+                <li><Link href="/time-tracking" className="hover:text-brand">Time clock</Link></li>
+                <li><Link href="/for-multi-unit-operators" className="hover:text-brand">Multiple locations</Link></li>
+                <li><Link href="/compare" className="hover:text-brand">Tap vs. checkbox</Link></li>
                 <li><Link href="/store" className="hover:text-brand">Store</Link></li>
               </ul>
             </div>
@@ -44,7 +47,7 @@ export default function Footer() {
                 Get started
               </p>
               <ul className="flex flex-col gap-2 text-sm">
-                <li><Link href="/signup" className="hover:text-brand">Sign up</Link></li>
+                <li><Link href="/signup" className="hover:text-brand">Book a walkthrough</Link></li>
                 <li><a href="https://chrps.app/login" className="hover:text-brand">Login</a></li>
               </ul>
             </div>

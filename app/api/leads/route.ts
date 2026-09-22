@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/mongodb";
-import { validateLeadInput, CALL_WINDOWS, type Lead } from "@/lib/lead";
+import {
+  validateLeadInput,
+  CALL_WINDOWS,
+  LOCATION_COUNTS,
+  CLOSER_SETUPS,
+  type Lead,
+} from "@/lib/lead";
 import { createZohoLead, createZohoLeadTask, splitName } from "@/lib/zoho";
 
 /** Business closes for the day around 6pm; after that, push the follow-up task to tomorrow. */
@@ -45,6 +51,9 @@ export async function POST(request: Request) {
   const callWindowLabel =
     CALL_WINDOWS.find((w) => w.value === lead.callWindow)?.label ?? lead.callWindow;
 
+  const locationsLabel = LOCATION_COUNTS.find((l) => l.value === lead.locations)?.label;
+  const closerSetupLabel = CLOSER_SETUPS.find((c) => c.value === lead.closerSetup)?.label;
+
   try {
     const { firstName, lastName } = splitName(lead.contactName);
     const leadId = await createZohoLead({
@@ -53,7 +62,12 @@ export async function POST(request: Request) {
       Company: lead.companyName,
       Email: lead.email,
       Phone: lead.phone,
-      Description: [`Type of business: ${lead.vertical}`, lead.notes].filter(Boolean).join("\n\n"),
+      Description: [
+        `Type of business: ${lead.vertical}`,
+        locationsLabel && `Locations: ${locationsLabel}`,
+        closerSetupLabel && `Closing setup: ${closerSetupLabel}`,
+        lead.notes,
+      ].filter(Boolean).join("\n\n"),
       Lead_Source: "Website",
     });
 

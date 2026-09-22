@@ -95,8 +95,8 @@ export const FEATURES: Feature[] = [
   {
     slug: "payroll",
     icon: "receipt",
-    title: "Payroll / time tracking",
-    description: "",
-    placeholder: true,
+    title: "NFC time clock & timesheets",
+    description:
+      "Clock in and out with a tap on your location's clock tag. Weekly hours per employee, regular and overtime, plus a CSV you can take to your payroll provider. Hours only — not a payroll system.",
   },
 ];

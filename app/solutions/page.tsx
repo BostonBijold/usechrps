@@ -7,7 +7,7 @@ import { SOLUTIONS } from "@/lib/solutions";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Ch'rps for restaurants, gyms, and labs — solutions built around how your team actually works.",
+    "Ch'rps for soft-serve, froyo, soda and coffee shops — plus restaurants. Solutions built around how your team actually works.",
 };
 
 export default function SolutionsPage() {
@@ -34,6 +34,11 @@ export default function SolutionsPage() {
             <h2 className="text-lg font-semibold text-ink group-hover:text-brand">
               {s.label}
             </h2>
+            {s.tagline && (
+              <p className="font-data mt-1 text-xs uppercase tracking-wide text-brand">
+                {s.tagline}
+              </p>
+            )}
             <p className="mt-2 text-sm text-muted">{s.intro}</p>
           </Link>
         ))}

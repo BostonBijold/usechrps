@@ -32,7 +32,7 @@ export default function FeaturesPage() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <Button href="/signup">Get Started</Button>
+          <Button href="/signup">Book a walkthrough</Button>
         </div>
       </Section>
     </>

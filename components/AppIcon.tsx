@@ -15,6 +15,8 @@ import {
   Dumbbell,
   FlaskConical,
   Hotel,
+  IceCreamCone,
+  CupSoda,
   CircleHelp,
   type LucideIcon,
 } from "lucide-react";
@@ -38,6 +40,8 @@ const ICON_MAP: Record<string, LucideIcon> = {
   users: Users,
   "wifi-off": WifiOff,
   lock: Lock,
+  "treat-shops": IceCreamCone,
+  "drink-shops": CupSoda,
   restaurants: UtensilsCrossed,
   gyms: Dumbbell,
   labs: FlaskConical,

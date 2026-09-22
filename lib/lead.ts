@@ -1,4 +1,4 @@
-export const VERTICALS = ["restaurant", "gym", "lab", "hotel", "other"] as const;
+export const VERTICALS = ["treat-shop", "drink-shop", "restaurant", "gym", "lab", "hotel", "other"] as const;
 export type Vertical = (typeof VERTICALS)[number];
 
 export const CALL_WINDOWS = [
@@ -9,6 +9,21 @@ export const CALL_WINDOWS = [
 ] as const;
 export type CallWindow = (typeof CALL_WINDOWS)[number]["value"];
 
+export const LOCATION_COUNTS = [
+  { value: "1", label: "1 location" },
+  { value: "2-5", label: "2–5 locations" },
+  { value: "6-20", label: "6–20 locations" },
+  { value: "20+", label: "More than 20" },
+] as const;
+export type LocationCount = (typeof LOCATION_COUNTS)[number]["value"];
+
+export const CLOSER_SETUPS = [
+  { value: "one-person", label: "One person closes alone" },
+  { value: "two-plus", label: "Two or more close together" },
+  { value: "manager", label: "A manager is always on site" },
+] as const;
+export type CloserSetup = (typeof CLOSER_SETUPS)[number]["value"];
+
 export type LeadInput = {
   companyName: string;
   contactName: string;
@@ -16,6 +31,8 @@ export type LeadInput = {
   phone: string;
   vertical: Vertical;
   callWindow: CallWindow;
+  locations?: LocationCount;
+  closerSetup?: CloserSetup;
   notes?: string;
 };
 
@@ -38,6 +55,8 @@ export function validateLeadInput(body: unknown): { data: LeadInput } | { error:
   const phone = String(b.phone ?? "").trim();
   const vertical = String(b.vertical ?? "").trim();
   const callWindow = String(b.callWindow ?? "").trim();
+  const locations = String(b.locations ?? "").trim();
+  const closerSetup = String(b.closerSetup ?? "").trim();
   const notes = b.notes ? String(b.notes).trim() : undefined;
 
   if (!companyName) return { error: "Company name is required" };
@@ -51,6 +70,13 @@ export function validateLeadInput(body: unknown): { data: LeadInput } | { error:
     return { error: "Please select when's best for a call" };
   }
 
+  if (locations && !LOCATION_COUNTS.some((l) => l.value === locations)) {
+    return { error: "Please select a valid number of locations" };
+  }
+  if (closerSetup && !CLOSER_SETUPS.some((c) => c.value === closerSetup)) {
+    return { error: "Please select a valid closing setup" };
+  }
+
   return {
     data: {
       companyName,
@@ -59,6 +85,8 @@ export function validateLeadInput(body: unknown): { data: LeadInput } | { error:
       phone,
       vertical: vertical as Vertical,
       callWindow: callWindow as CallWindow,
+      locations: (locations || undefined) as LocationCount | undefined,
+      closerSetup: (closerSetup || undefined) as CloserSetup | undefined,
       notes,
     },
   };
