@@ -8,7 +8,7 @@ import { FEATURES } from "@/lib/features";
 export const metadata: Metadata = {
   title: "Features",
   description:
-    "Everything Ch'rps does today, and what's coming next — task verification, NFC tap-to-trigger, real-time analytics, and more.",
+    "Everything Ch'rps does today, and what's coming next: task verification, NFC tap-to-trigger, real-time analytics, and more.",
 };
 
 export default function FeaturesPage() {
@@ -20,7 +20,7 @@ export default function FeaturesPage() {
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-lg text-muted">
           The job isn&rsquo;t done until the checklist is. Here&rsquo;s
-          everything <Brand /> does to make sure it actually gets done —
+          everything <Brand /> does to make sure it actually gets done,
           and recorded honestly.
         </p>
       </Section>

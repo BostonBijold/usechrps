@@ -13,7 +13,7 @@ const steps = [
     title: "Stick a tag on the machine",
     body: (
       <>
-        A <Brand /> NFC tag goes wherever the check happens — the soft-serve
+        A <Brand /> NFC tag goes wherever the check happens: the soft-serve
         machine, the walk-in, the register, the drive-thru window.
       </>
     ),
@@ -23,14 +23,14 @@ const steps = [
   {
     n: "2",
     title: "Your closer taps to prove it",
-    body: "A tap with their own phone, already in their pocket — no separate device, no shared login, no training deck.",
+    body: "A tap with their own phone, already in their pocket. No separate device, no shared login, no training deck.",
     image: "/images/howto2.jpeg",
     alt: "A staff member tapping their phone on a Ch'rps NFC tag in the kitchen",
   },
   {
     n: "3",
     title: "You see it from anywhere",
-    body: "Timestamped, by whom, where, and when — as it happens. No more watching the cameras to find out.",
+    body: "Timestamped, by whom, where, and when, as it happens. No more watching the cameras to find out.",
     image: "/images/howto3.jpeg",
     alt: "The Ch'rps app showing a real-time checklist of completed and pending tasks",
   },
@@ -40,7 +40,7 @@ const problems = [
   {
     icon: "clock",
     title: "Closing alone",
-    body: "A short window to reclean the whole shop, by yourself. Something gets skipped — and you find out later.",
+    body: "A short window to reclean the whole shop, by yourself. Something gets skipped, and you find out later.",
   },
   {
     icon: "clipboard-list",
@@ -58,7 +58,7 @@ const trustPoints = [
   {
     icon: "clipboard-list",
     title: "Timestamped, per-person records",
-    body: "Every task logs who completed it, when, and — for form tasks — the reading they entered, like a cooler temperature.",
+    body: "Every task logs who completed it, and when. Form tasks also log the reading they entered, like a cooler temperature.",
   },
   {
     icon: "nfc",
@@ -88,11 +88,11 @@ export default function Home() {
               For soft-serve, froyo, soda and coffee shops
             </p>
             <h1 className="font-heading text-4xl font-semibold leading-tight text-ink md:text-5xl">
-              Know the machine got cleaned — even when you&rsquo;re not there.
+              Know the machine got cleaned, even when you&rsquo;re not there.
             </h1>
             <p className="mt-5 max-w-lg text-lg text-muted">
               <Brand /> proves your closer did the job with a tap on a tag. No
-              cameras to watch, no checkbox to fake — just timestamped proof
+              cameras to watch, no checkbox to fake. Just timestamped proof
               of who did what, where, and when.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -175,7 +175,7 @@ export default function Home() {
             <p className="mt-5 text-muted">
               Tell the inspector what happened, and show them. <Brand /> keeps
               an honest, timestamped record of cleaning cycles, temperature
-              readings and closing lists — and the follow-up when something
+              readings and closing lists, plus the follow-up when something
               was out of range.
             </p>
             <ul className="mt-6 space-y-4">
@@ -222,10 +222,10 @@ export default function Home() {
           />
           <div>
             <h2 className="font-heading text-3xl font-semibold text-ink">
-              Cups, lids and toppings — counted before they run out.
+              Cups, lids and toppings, counted before they run out.
             </h2>
             <p className="mt-5 text-muted">
-              A top-up count tracker for par levels — someone looks, someone
+              A top-up count tracker for par levels. Someone looks, someone
               types the number they see. Organize items by storage area,
               bind an NFC tag to the walk-in or the shelf, and let <Brand />{" "}
               flag anything that&rsquo;s dropped below par before a manager
@@ -234,7 +234,7 @@ export default function Home() {
             <ul className="mt-6 space-y-2 text-sm text-muted">
               <li className="flex items-start gap-2">
                 <AppIcon name="package" size={18} className="mt-0.5 shrink-0 text-brand" />
-                Grouped by area — Freezer, Dry Storage, Bar, or however your
+                Grouped by area: Freezer, Dry Storage, Bar, or however your
                 space is laid out.
               </li>
               <li className="flex items-start gap-2">
@@ -263,7 +263,7 @@ export default function Home() {
           <p className="mt-3 text-muted">
             Staff punch in and out on their own phone at your location&rsquo;s
             clock tag. You get weekly hours per person, regular and overtime,
-            and a CSV to take to your payroll provider — hours only, not a
+            and a CSV to take to your payroll provider. It tracks hours only; it&rsquo;s not a
             payroll system.
           </p>
           <div className="mt-6">
@@ -283,17 +283,17 @@ export default function Home() {
             </h2>
             <p className="mt-5 text-muted">
               Some platforms make employees stop and take a photo of their own
-              face every time they clock in — sometimes four times a day.{" "}
+              face every time they clock in, sometimes four times a day.{" "}
               <Brand /> doesn&rsquo;t. Your phone is already yours: it&rsquo;s
               in your pocket, it&rsquo;s tied to your number, and you&rsquo;re
               not likely to hand it to someone else. That&rsquo;s real
-              verification — the right person, physically present, using
-              their own device — without asking anyone for a selfie at 11pm
+              verification: the right person, physically present, using
+              their own device. All without asking anyone for a selfie at 11pm
               at the end of an eight-hour shift.
             </p>
             <p className="mt-4 text-muted">
               No biometric scans. No facial recognition. No PIN pads. Just a
-              tap — verified by presence and device, not a photo.
+              tap, verified by presence and device, not a photo.
             </p>
           </div>
           <Image
@@ -314,7 +314,7 @@ export default function Home() {
             Built for shops that close with one person.
           </h2>
           <p className="mt-3 text-muted">
-            Treat and drink shops first — and it works the same for
+            Treat and drink shops first, and it works the same for
             restaurants too.
           </p>
         </div>
@@ -353,7 +353,7 @@ export default function Home() {
             Running more than one location?
           </h2>
           <p className="mt-3 text-muted">
-            Priced per location, not per employee — so a crew that turns over
+            Priced per location, not per employee, so a crew that turns over
             every few months never changes your bill. Same checklists at every
             store, one view of how each one closed.
           </p>
