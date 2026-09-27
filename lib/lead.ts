@@ -24,13 +24,15 @@ export const CLOSER_SETUPS = [
 ] as const;
 export type CloserSetup = (typeof CLOSER_SETUPS)[number]["value"];
 
+// Only name and email are required, so the short "get in touch" form and the
+// longer signup form (components/SignupForm.tsx) can share this endpoint.
 export type LeadInput = {
-  companyName: string;
   contactName: string;
   email: string;
-  phone: string;
-  vertical: Vertical;
-  callWindow: CallWindow;
+  companyName?: string;
+  phone?: string;
+  vertical?: Vertical;
+  callWindow?: CallWindow;
   locations?: LocationCount;
   closerSetup?: CloserSetup;
   notes?: string;
@@ -59,14 +61,12 @@ export function validateLeadInput(body: unknown): { data: LeadInput } | { error:
   const closerSetup = String(b.closerSetup ?? "").trim();
   const notes = b.notes ? String(b.notes).trim() : undefined;
 
-  if (!companyName) return { error: "Company name is required" };
-  if (!contactName) return { error: "Contact name is required" };
+  if (!contactName) return { error: "Name is required" };
   if (!EMAIL_RE.test(email)) return { error: "A valid email is required" };
-  if (!phone) return { error: "Phone is required" };
-  if (!VERTICALS.includes(vertical as Vertical)) {
+  if (vertical && !VERTICALS.includes(vertical as Vertical)) {
     return { error: "Please select a valid type of business" };
   }
-  if (!CALL_WINDOWS.some((w) => w.value === callWindow)) {
+  if (callWindow && !CALL_WINDOWS.some((w) => w.value === callWindow)) {
     return { error: "Please select when's best for a call" };
   }
 
@@ -79,12 +79,12 @@ export function validateLeadInput(body: unknown): { data: LeadInput } | { error:
 
   return {
     data: {
-      companyName,
       contactName,
       email,
-      phone,
-      vertical: vertical as Vertical,
-      callWindow: callWindow as CallWindow,
+      companyName: companyName || undefined,
+      phone: phone || undefined,
+      vertical: (vertical || undefined) as Vertical | undefined,
+      callWindow: (callWindow || undefined) as CallWindow | undefined,
       locations: (locations || undefined) as LocationCount | undefined,
       closerSetup: (closerSetup || undefined) as CloserSetup | undefined,
       notes,

@@ -41,7 +41,7 @@ export default function ResourcesPage() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <Button href="/signup">Book a walkthrough</Button>
+          <Button href="/signup">Let&rsquo;s talk</Button>
         </div>
       </Section>
     </>

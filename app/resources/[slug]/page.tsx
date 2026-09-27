@@ -81,7 +81,7 @@ export default async function ResourcePage({
             know it got done — not just that it got initialed.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Button href="/signup">Book a walkthrough</Button>
+            <Button href="/signup">Let&rsquo;s talk</Button>
             <Button href="/resources" variant="secondary">
               More resources
             </Button>

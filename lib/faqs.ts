@@ -19,6 +19,6 @@ export const FAQS: Faq[] = [
   },
   {
     q: "Can I try it in one location first?",
-    a: "Yes. Book a walkthrough and ask about a pilot at a single location before you roll anything out more widely.",
+    a: "Yes. Reach out and ask about a pilot at a single location before you roll anything out more widely.",
   },
 ];

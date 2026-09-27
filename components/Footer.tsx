@@ -14,7 +14,7 @@ export default function Footer() {
               Proof the job got done — with a tap, not a checkbox.
             </p>
             <div className="mt-5">
-              <Button href="/signup">Book a walkthrough</Button>
+              <Button href="/signup">Let&rsquo;s talk</Button>
             </div>
           </div>
 
@@ -47,7 +47,7 @@ export default function Footer() {
                 Get started
               </p>
               <ul className="flex flex-col gap-2 text-sm">
-                <li><Link href="/signup" className="hover:text-brand">Book a walkthrough</Link></li>
+                <li><Link href="/signup" className="hover:text-brand">Let&rsquo;s talk</Link></li>
                 <li><a href="https://chrps.app/login" className="hover:text-brand">Login</a></li>
               </ul>
             </div>

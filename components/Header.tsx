@@ -120,7 +120,7 @@ export default function Header() {
             Login
           </Button>
           <Button href="/signup" variant="primary">
-            Book a walkthrough
+            Let&rsquo;s talk
           </Button>
         </div>
 
@@ -165,7 +165,7 @@ export default function Header() {
                 Login
               </Button>
               <Button href="/signup" variant="primary">
-                Book a walkthrough
+                Let&rsquo;s talk
               </Button>
             </div>
           </nav>

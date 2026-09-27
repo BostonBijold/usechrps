@@ -96,7 +96,7 @@ export default function Home() {
               of who did what, where, and when.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/signup">Book a walkthrough</Button>
+              <Button href="/signup">Let&rsquo;s talk</Button>
               <Button href="/features" variant="secondary">
                 See how it works
               </Button>
@@ -372,13 +372,10 @@ export default function Home() {
         </h2>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button href="/signup" variant="inverse">
-            Book a walkthrough
+            Let&rsquo;s talk
           </Button>
           <Button href="/store" variant="inverse-ghost">
             Browse tags
-          </Button>
-          <Button href="/contact" variant="inverse-ghost">
-            Contact us
           </Button>
         </div>
       </Section>
