@@ -77,7 +77,7 @@ export default function TimeTrackingPage() {
           payroll — no separate clock-in app, no PIN pad, no selfies.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Button href="/signup">Book a walkthrough</Button>
+          <Button href="/signup">Let&rsquo;s talk</Button>
           <Button href="/features" variant="secondary">
             All features
           </Button>
@@ -180,7 +180,7 @@ export default function TimeTrackingPage() {
         </h2>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button href="/signup" variant="inverse">
-            Book a walkthrough
+            Let&rsquo;s talk
           </Button>
           <Button href="/pricing" variant="inverse-ghost">
             See pricing

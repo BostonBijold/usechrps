@@ -56,7 +56,7 @@ export default async function SolutionPage({
             </h1>
             <p className="mt-5 text-lg text-muted">{solution.intro}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/signup">Book a walkthrough</Button>
+              <Button href="/signup">Let&rsquo;s talk</Button>
               <Button href="/pricing" variant="secondary">
                 See pricing
               </Button>
@@ -156,7 +156,7 @@ export default async function SolutionPage({
           ))}
         </div>
         <div className="mt-12 text-center">
-          <Button href="/signup">Book a walkthrough</Button>
+          <Button href="/signup">Let&rsquo;s talk</Button>
           <p className="mt-3 text-sm text-muted">
             <Brand /> is priced per location, not per employee.
           </p>

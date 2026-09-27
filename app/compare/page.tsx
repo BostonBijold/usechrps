@@ -103,7 +103,7 @@ export default function ComparePage() {
             of at your next inspection.
           </p>
           <div className="mt-8">
-            <Button href="/signup">Book a walkthrough</Button>
+            <Button href="/signup">Let&rsquo;s talk</Button>
           </div>
         </div>
       </Section>

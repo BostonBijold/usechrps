@@ -49,7 +49,9 @@ export async function POST(request: Request) {
   }
 
   const callWindowLabel =
-    CALL_WINDOWS.find((w) => w.value === lead.callWindow)?.label ?? lead.callWindow;
+    CALL_WINDOWS.find((w) => w.value === lead.callWindow)?.label ?? "Not given";
+  // Company is required by Zoho's Leads module; the short form doesn't ask for it.
+  const company = lead.companyName || `${lead.contactName} (via website)`;
 
   const locationsLabel = LOCATION_COUNTS.find((l) => l.value === lead.locations)?.label;
   const closerSetupLabel = CLOSER_SETUPS.find((c) => c.value === lead.closerSetup)?.label;
@@ -59,11 +61,11 @@ export async function POST(request: Request) {
     const leadId = await createZohoLead({
       Last_Name: lastName,
       First_Name: firstName,
-      Company: lead.companyName,
+      Company: company,
       Email: lead.email,
       Phone: lead.phone,
       Description: [
-        `Type of business: ${lead.vertical}`,
+        lead.vertical && `Type of business: ${lead.vertical}`,
         locationsLabel && `Locations: ${locationsLabel}`,
         closerSetupLabel && `Closing setup: ${closerSetupLabel}`,
         lead.notes,
@@ -73,11 +75,11 @@ export async function POST(request: Request) {
 
     try {
       await createZohoLeadTask({
-        Subject: `Call ${lead.contactName} — ${lead.companyName}`,
+        Subject: `${lead.phone ? "Call" : "Email"} ${lead.contactName} — ${company}`,
         Who_Id: leadId,
         Due_Date: nextTaskDueDate(),
         Priority: "High",
-        Description: `Preferred call time: ${callWindowLabel}\nPhone: ${lead.phone}\nEmail: ${lead.email}`,
+        Description: `Preferred call time: ${callWindowLabel}\nPhone: ${lead.phone ?? "Not given"}\nEmail: ${lead.email}`,
       });
     } catch (err) {
       console.error("Failed to create Zoho follow-up task", err);

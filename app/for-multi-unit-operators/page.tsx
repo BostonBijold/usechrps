@@ -80,7 +80,7 @@ export default function MultiUnitPage() {
           per-employee bill that climbs with turnover.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Button href="/signup">Book a walkthrough</Button>
+          <Button href="/signup">Let&rsquo;s talk</Button>
           <Button href="/pricing" variant="secondary">
             See pricing
           </Button>
@@ -141,10 +141,7 @@ export default function MultiUnitPage() {
         </h2>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button href="/signup" variant="inverse">
-            Book a walkthrough
-          </Button>
-          <Button href="/contact" variant="inverse-ghost">
-            Contact us
+            Let&rsquo;s talk
           </Button>
         </div>
       </Section>
