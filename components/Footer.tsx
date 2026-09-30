@@ -24,6 +24,7 @@ export default function Footer() {
                 Product
               </p>
               <ul className="flex flex-col gap-2 text-sm">
+                <li><Link href="/how-it-works" className="hover:text-brand">How it works</Link></li>
                 <li><Link href="/features" className="hover:text-brand">Features</Link></li>
                 <li><Link href="/solutions" className="hover:text-brand">Solutions</Link></li>
                 <li><Link href="/time-tracking" className="hover:text-brand">Time clock</Link></li>

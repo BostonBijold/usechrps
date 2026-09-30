@@ -6,6 +6,7 @@ const siteUrl = "https://usechrps.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     "",
+    "/how-it-works",
     "/features",
     "/solutions",
     "/store",

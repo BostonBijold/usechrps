@@ -39,6 +39,12 @@ export default function Header() {
 
         <nav className="hidden items-center gap-1 lg:flex">
           <Link
+            href="/how-it-works"
+            className="rounded-[var(--radius-button)] px-3 py-2 text-sm font-medium text-ink hover:bg-card"
+          >
+            How it works
+          </Link>
+          <Link
             href="/features"
             className="rounded-[var(--radius-button)] px-3 py-2 text-sm font-medium text-ink hover:bg-card"
           >
@@ -140,6 +146,9 @@ export default function Header() {
       {mobileOpen && (
         <div className="border-t border-border bg-white px-6 py-4 lg:hidden">
           <nav className="flex flex-col gap-1">
+            <Link href="/how-it-works" className="rounded-[var(--radius-button)] px-3 py-2 text-sm font-medium hover:bg-card">
+              How it works
+            </Link>
             <Link href="/features" className="rounded-[var(--radius-button)] px-3 py-2 text-sm font-medium hover:bg-card">
               Features
             </Link>
