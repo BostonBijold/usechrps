@@ -3,7 +3,7 @@ import Image from "next/image";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import Brand from "@/components/Brand";
-import { KITS } from "@/lib/pricing";
+import { KITS, TAG_PRICE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Store",
@@ -11,24 +11,13 @@ export const metadata: Metadata = {
     "Ch'rps-branded NFC tags, ready to use — pre-provisioned and claimed to your company on setup.",
 };
 
-const products = [
-  {
-    name: "Ch'rps Cards",
-    suffix: "Cards",
-    description:
-      "Durable NFC cards, sized for a station or wall mount — the standard choice for fridges, prep lines, and equipment.",
-    priceRange: "$—–$— per pack (pricing TBD)",
-    image: "/images/cards.jpeg",
-  },
-  {
-    name: "Ch'rps Stickers",
-    suffix: "Stickers",
-    description:
-      "Adhesive NFC stickers for tighter spaces — a shelf edge, a piece of equipment, a door frame.",
-    priceRange: "$—–$— per pack (pricing TBD)",
-    image: "/images/stickers.jpeg",
-  },
-];
+const tag = {
+  name: "Ch'rps On-Metal Tags",
+  suffix: "On-Metal Tags",
+  description:
+    "Freezer-rated NFC tags that read reliably on any surface — machines, steel shelving, walk-in doors, prep lines, and everywhere else.",
+  image: "/images/stickers.jpeg",
+};
 
 export default function StorePage() {
   return (
@@ -38,10 +27,10 @@ export default function StorePage() {
           <Brand />-branded NFC tags, ready to use.
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-lg text-muted">
-          Every <Brand /> tag is built to survive where it&rsquo;s mounted —
-          freezer-rated on-metal tags for your toughest spots, reliable
-          off-metal tags everywhere else. This is the hardware that turns a
-          checklist into a verified, timestamped record.
+          Every <Brand /> tag is a freezer-rated on-metal tag, built to
+          survive wherever it&rsquo;s mounted. One tag for every spot. This
+          is the hardware that turns a checklist into a verified,
+          timestamped record.
         </p>
       </Section>
 
@@ -84,28 +73,21 @@ export default function StorePage() {
             claim, so there&rsquo;s no guesswork about compatible hardware.
           </p>
         </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {products.map((p) => (
-            <div
-              key={p.name}
-              className="rounded-[var(--radius-card)] border border-border bg-white p-6"
-            >
-              <Image
-                src={p.image}
-                alt={p.name}
-                width={600}
-                height={450}
-                className="mb-5 aspect-[4/3] w-full rounded-[var(--radius-card)] border border-border object-contain"
-              />
-              <h3 className="text-lg font-semibold text-ink">
-                <Brand /> {p.suffix}
-              </h3>
-              <p className="mt-2 text-sm text-muted">{p.description}</p>
-              <p className="font-data mt-4 text-xs uppercase tracking-wide text-brand">
-                Starting at {p.priceRange}
-              </p>
-            </div>
-          ))}
+        <div className="mx-auto mt-10 max-w-md rounded-[var(--radius-card)] border border-border bg-white p-6">
+          <Image
+            src={tag.image}
+            alt={tag.name}
+            width={600}
+            height={450}
+            className="mb-5 aspect-[4/3] w-full rounded-[var(--radius-card)] border border-border object-contain"
+          />
+          <h3 className="text-lg font-semibold text-ink">
+            <Brand /> {tag.suffix}
+          </h3>
+          <p className="mt-2 text-sm text-muted">{tag.description}</p>
+          <p className="font-data mt-4 text-xs uppercase tracking-wide text-brand">
+            {TAG_PRICE}
+          </p>
         </div>
 
         <div className="mt-12 text-center">
