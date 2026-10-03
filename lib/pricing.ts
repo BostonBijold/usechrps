@@ -21,35 +21,26 @@ export const KITS: Kit[] = [
   {
     slug: "starter-kit",
     name: "Starter Kit",
-    tagSummary: "10 tags — 5 on-metal, 5 off-metal",
+    tagSummary: "10 on-metal tags",
     listPrice: "$75",
     signupPrice: "$50",
     discountLabel: "33% off",
     blurb:
-      "Sized for the toughest spots — freezer, walk-in, prep line — plus enough for checklist points around the floor.",
+      "Enough to cover the checklist points that matter most — freezer, walk-in, prep line, machines, and the clock tag.",
   },
   {
     slug: "pro-kit",
     name: "Pro Kit",
-    tagSummary: "30 tags — 10 on-metal, 20 off-metal",
+    tagSummary: "30 on-metal tags",
     listPrice: "$150",
     signupPrice: "$100",
     discountLabel: "33% off",
     blurb:
-      "Built for Par Sheet tracking — shelves, storage, individual items — so it leans harder into on-metal tags for durability in the same rugged spots Par Sheets actually get used.",
+      "Built for Par Sheet tracking too — shelves, storage, individual items — on top of every checklist point around the floor.",
   },
 ];
 
-export type ReorderTag = {
-  slug: string;
-  label: string;
-  price: string;
-};
-
-export const REORDER_TAGS: ReorderTag[] = [
-  { slug: "off-metal", label: "Off-metal (sticker)", price: "$1.75 / tag" },
-  { slug: "on-metal", label: "On-metal (durable)", price: "$3.75 / tag" },
-];
+export const TAG_PRICE = "$3.75 / tag";
 
 export const PLAN: Plan = {
   name: "Ch'rps",

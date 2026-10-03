@@ -11,7 +11,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: "What if a tag gets peeled off or damaged?",
-    a: "Tags are registered to your company, so a lost or damaged tag can be unbound and a replacement tag bound to the same task. On-metal tags are available for machines, freezers and other metal surfaces.",
+    a: "Tags are registered to your company, so a lost or damaged tag can be unbound and a replacement tag bound to the same task. Every tag is on-metal, so it reads reliably on machines, freezers and any other surface.",
   },
   {
     q: "How is pricing set up?",

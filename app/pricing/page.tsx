@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import Brand from "@/components/Brand";
-import { PLAN, KITS, REORDER_TAGS } from "@/lib/pricing";
+import { PLAN, KITS, TAG_PRICE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -98,19 +98,12 @@ export default function PricingPage() {
           <h3 className="text-lg font-semibold text-ink">Need more tags?</h3>
           <p className="mt-2 text-sm text-muted">
             Order exactly what you need, whenever you need it — no preset
-            pack sizes.
+            pack sizes. Every tag is on-metal, so it works on any surface.
           </p>
-          <ul className="mx-auto mt-5 max-w-xs space-y-2 text-sm text-muted">
-            {REORDER_TAGS.map((tag) => (
-              <li
-                key={tag.slug}
-                className="flex items-center justify-between border-b border-border pb-2 last:border-0"
-              >
-                <span>{tag.label}</span>
-                <span className="font-data text-ink">{tag.price}</span>
-              </li>
-            ))}
-          </ul>
+          <p className="mx-auto mt-5 flex max-w-xs items-center justify-between text-sm text-muted">
+            <span>On-metal tag</span>
+            <span className="font-data text-ink">{TAG_PRICE}</span>
+          </p>
         </div>
       </Section>
 
