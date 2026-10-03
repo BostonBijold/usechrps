@@ -62,7 +62,7 @@ export const FEATURES: Feature[] = [
     icon: "bell",
     title: "Push notifications",
     description:
-      "A nudge when a task list's start time arrives, so opening and closing checklists get started on time, not remembered halfway through a shift.",
+      "Clock in and notifications switch on. Whoever's on shift gets a nudge when a task list's start time arrives, and a heads-up when a list is missed, so opening and closing checklists get done on time, not remembered halfway through a shift.",
   },
   {
     slug: "team-invites",

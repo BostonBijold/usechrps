@@ -1,12 +1,10 @@
-export type Tier = {
-  slug: string;
+export type Plan = {
   name: string;
   price: string;
   unit: string;
   description: string;
   features: string[];
   cta: { label: string; href: string };
-  highlight?: boolean;
 };
 
 export type Kit = {
@@ -38,7 +36,7 @@ export const KITS: Kit[] = [
     signupPrice: "$100",
     discountLabel: "33% off",
     blurb:
-      "Built for Par Sheet tracking — shelves, storage, individual items — so it leans harder into on-metal tags for durability in the same rugged spots Pro's Par Sheet features actually get used.",
+      "Built for Par Sheet tracking — shelves, storage, individual items — so it leans harder into on-metal tags for durability in the same rugged spots Par Sheets actually get used.",
   },
 ];
 
@@ -53,48 +51,20 @@ export const REORDER_TAGS: ReorderTag[] = [
   { slug: "on-metal", label: "On-metal (durable)", price: "$3.75 / tag" },
 ];
 
-export const TIERS: Tier[] = [
-  {
-    slug: "starter",
-    name: "Starter",
-    price: "$79",
-    unit: "/mo per location",
-    description: "Everything you need to get task verification off paper.",
-    features: [
-      "Core task verification (NFC-tap checklists)",
-      "Basic reports",
-      "Mobile app access",
-    ],
-    cta: { label: "Get Started", href: "/signup" },
-  },
-  {
-    slug: "pro",
-    name: "Pro",
-    price: "$149",
-    unit: "/mo per location",
-    description: "For teams that want the full operational picture.",
-    features: [
-      "Everything in Starter",
-      "Par Sheet management",
-      "Admin Console & advanced reports",
-      "Notifications (missed-list alerts, start-time reminders)",
-      "Time clock (once shipped)",
-    ],
-    cta: { label: "Get Started", href: "/signup" },
-    highlight: true,
-  },
-  {
-    slug: "multi-location",
-    name: "Multi-location",
-    price: "Custom",
-    unit: "volume pricing",
-    description:
-      "For franchise groups and multi-location operators — per-location rate steps down as you grow.",
-    features: [
-      "Everything in Pro",
-      "Volume discount across locations",
-      "Dedicated setup and support",
-    ],
-    cta: { label: "Talk to us", href: "/contact" },
-  },
-];
+export const PLAN: Plan = {
+  name: "Ch'rps",
+  price: "$149",
+  unit: "/mo per location",
+  description:
+    "One plan with everything included. No tiers, no add-ons, no per-employee fees.",
+  features: [
+    "NFC-tap task verification and checklists",
+    "Par Sheet tracking with par-level alerts",
+    "Notifications at every location, active for whoever is clocked in",
+    "Missed-list alerts and start-time reminders",
+    "NFC time clock & timesheets",
+    "Admin Console & reports",
+    "Mobile app for your whole crew",
+  ],
+  cta: { label: "Get Started", href: "/signup" },
+};

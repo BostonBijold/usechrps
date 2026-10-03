@@ -15,7 +15,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: "How is pricing set up?",
-    a: "Per location, not per employee, so your price doesn't change when you hire or lose someone. Tag kits are a separate one-time hardware cost. See the pricing page for current rates.",
+    a: "One plan: $149 a month per location, with every feature included. It's per location, not per employee, so your price doesn't change when you hire or lose someone. Tag kits are a separate one-time hardware cost.",
   },
   {
     q: "Can I try it in one location first?",
