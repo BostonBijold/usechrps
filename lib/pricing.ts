@@ -40,7 +40,7 @@ export const KITS: Kit[] = [
   },
 ];
 
-export const TAG_PRICE = "$3.75 / tag";
+export const TAG_PRICE = "$7.50 / tag";
 
 export const PLAN: Plan = {
   name: "Ch'rps",
