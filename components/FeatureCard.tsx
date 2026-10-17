@@ -4,7 +4,10 @@ import AppIcon from "./AppIcon";
 
 export default function FeatureCard({ feature }: { feature: Feature }) {
   return (
-    <div className="rounded-[var(--radius-card)] border border-border bg-white p-6">
+    <div
+      id={feature.anchor}
+      className="scroll-mt-24 rounded-[var(--radius-card)] border border-border bg-white p-6"
+    >
       <div className="mb-3 flex items-center gap-3">
         <span className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-button)] bg-card text-brand">
           <AppIcon name={feature.icon} size={20} />

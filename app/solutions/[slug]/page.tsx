@@ -9,7 +9,7 @@ import Button from "@/components/Button";
 import Brand from "@/components/Brand";
 import TaskStatePill from "@/components/TaskStatePill";
 import { SOLUTIONS, getSolution } from "@/lib/solutions";
-import { FEATURES } from "@/lib/features";
+import { FEATURE_GROUPS } from "@/lib/features";
 
 export function generateStaticParams() {
   return SOLUTIONS.map((s) => ({ slug: s.slug }));
@@ -38,7 +38,14 @@ export default async function SolutionPage({
   const solution = getSolution(slug);
   if (!solution) notFound();
 
-  const displayedFeatures = solution.primary ? FEATURES : FEATURES.slice(0, 6);
+  // Treat Shops (primary) gets Verify + Remind + Manage; other verticals
+  // get the Verify group only.
+  const displayedGroups = solution.primary
+    ? ["verify", "remind", "manage"]
+    : ["verify"];
+  const displayedFeatures = FEATURE_GROUPS.filter((g) =>
+    displayedGroups.includes(g.id),
+  ).flatMap((g) => g.features);
 
   return (
     <>

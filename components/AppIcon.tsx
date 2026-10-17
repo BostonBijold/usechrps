@@ -18,6 +18,11 @@ import {
   IceCreamCone,
   CupSoda,
   CircleHelp,
+  Camera,
+  Gauge,
+  Monitor,
+  ListOrdered,
+  Undo2,
   type LucideIcon,
 } from "lucide-react";
 
@@ -40,6 +45,11 @@ const ICON_MAP: Record<string, LucideIcon> = {
   users: Users,
   "wifi-off": WifiOff,
   lock: Lock,
+  camera: Camera,
+  gauge: Gauge,
+  monitor: Monitor,
+  "list-ordered": ListOrdered,
+  undo: Undo2,
   "treat-shops": IceCreamCone,
   "drink-shops": CupSoda,
   restaurants: UtensilsCrossed,

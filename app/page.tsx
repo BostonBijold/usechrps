@@ -40,7 +40,7 @@ const problems = [
   {
     icon: "clock",
     title: "Closing alone",
-    body: "A short window to reclean the whole shop, by yourself. Something gets skipped, and you find out later.",
+    body: "A short window to clean, restock and lock up, by yourself. Something gets skipped, and you find out tomorrow.",
   },
   {
     icon: "clipboard-list",
@@ -77,6 +77,65 @@ const trustPoints = [
   },
 ];
 
+const pillars = [
+  {
+    icon: "nfc",
+    label: "Verify",
+    title: "Proof, not promises.",
+    body: "A task is completed with a tap on the tag at the station, so the person has to be standing there. Add a required photo for the tasks that matter most. Lists finished suspiciously fast get flagged.",
+  },
+  {
+    icon: "bell",
+    label: "Remind",
+    title: "No more texting the crew.",
+    body: "Whoever's clocked in gets a nudge when a list's start time arrives. If it's still not done when the window closes, managers get an alert.",
+  },
+  {
+    icon: "clipboard-list",
+    label: "Manage",
+    title: "Set it up once. See everything.",
+    body: "Build your lists with step-by-step instructions and photos, so a new hire knows exactly what \"clean the machine\" means. Review the work, send back anything that wasn't done right, and see every location in one place.",
+  },
+];
+
+const managerPoints = [
+  {
+    icon: "monitor",
+    title: "Admin Console",
+    body: "Build and edit task lists, a task catalog and par sheets from a full desktop view.",
+  },
+  {
+    icon: "list-ordered",
+    title: "Step-by-step instructions",
+    body: "Up to three steps per task, each with a photo, shown to the crew right at the tap.",
+  },
+  {
+    icon: "undo",
+    title: "Review and rework",
+    body: "Send a task back with a note. It gets redone, and the record shows both.",
+  },
+  {
+    icon: "bar-chart",
+    title: "Reports",
+    body: "Completion gaps, lists running behind, and each person's history.",
+  },
+];
+
+const alsoIncluded = [
+  {
+    icon: "package",
+    title: "Par Sheets",
+    body: "Count cups, lids and toppings by area. Anything below par gets flagged.",
+    href: "/features#par-sheets",
+  },
+  {
+    icon: "clock",
+    title: "Time clock",
+    body: "Staff clock in with the same tap. Weekly hours and a CSV for payroll.",
+    href: "/time-tracking",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -85,15 +144,15 @@ export default function Home() {
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
             <p className="font-data mb-3 text-xs uppercase tracking-wide text-brand">
-              For soft-serve, froyo, soda and coffee shops
+              For treat shops, drink shops and restaurants
             </p>
             <h1 className="font-heading text-4xl font-semibold leading-tight text-ink md:text-5xl">
-              Know the machine got cleaned, even when you&rsquo;re not there.
+              Know the checklist got done, even when you&rsquo;re not there.
             </h1>
             <p className="mt-5 max-w-lg text-lg text-muted">
-              <Brand /> proves your closer did the job with a tap on a tag. No
-              cameras to watch, no checkbox to fake. Just timestamped proof
-              of who did what, where, and when.
+              <Brand /> proves your crew did the job with a tap on a tag, right
+              where the work happens. The soft-serve machine, the walk-in, the
+              closing lock-up. No cameras to watch, no checkbox to fake.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/signup">Let&rsquo;s talk</Button>
@@ -165,6 +224,80 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* Verify / Remind / Manage */}
+      <Section bg="bg-card">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-heading text-3xl font-semibold text-ink">
+            Checklists you can actually trust.
+          </h2>
+          <p className="mt-3 text-muted">
+            A checklist only helps if it gets done, on time, by someone who
+            was really there. <Brand /> handles all three.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {pillars.map((p) => (
+            <div
+              key={p.label}
+              className="rounded-[var(--radius-card)] border border-border bg-white p-6"
+            >
+              <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-card text-brand">
+                <AppIcon name={p.icon} size={22} />
+              </span>
+              <span className="font-data mb-1 block text-xs uppercase tracking-wide text-brand">
+                {p.label}
+              </span>
+              <h3 className="text-base font-semibold text-ink">{p.title}</h3>
+              <p className="mt-2 text-sm text-muted">{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Manager side */}
+      <Section>
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          <div>
+            <h2 className="font-heading text-3xl font-semibold text-ink">
+              Run it from your phone or your desk.
+            </h2>
+            <p className="mt-5 text-muted">
+              Managers can fix a list mid-shift from their phone, or sit down
+              at a laptop and build out every list for every location. Same
+              lists, same data, either way.
+            </p>
+            <ul className="mt-6 space-y-4">
+              {managerPoints.map((m) => (
+                <li key={m.title} className="flex items-start gap-3">
+                  <AppIcon
+                    name={m.icon}
+                    size={20}
+                    className="mt-0.5 shrink-0 text-brand"
+                  />
+                  <span className="text-sm text-muted">
+                    <span className="font-semibold text-ink">{m.title}.</span>{" "}
+                    {m.body}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-sm text-muted">
+              Setup takes minutes, not a weekend. If a tool adds work for your
+              managers, it doesn&rsquo;t last. We built <Brand /> so it
+              doesn&rsquo;t.
+            </p>
+          </div>
+          {/* TODO: replace with Admin Console screenshot */}
+          <Image
+            src="/images/checklists.png"
+            alt="The Ch'rps app showing Opening, Mid-Shift, and Closing shift checklists with live completion times"
+            width={788}
+            height={1336}
+            className="mx-auto w-full max-w-xs rounded-[var(--radius-card)] object-contain"
+          />
+        </div>
+      </Section>
+
       {/* Inspection ready */}
       <Section bg="bg-card">
         <div className="grid items-center gap-12 md:grid-cols-2">
@@ -210,68 +343,39 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Par Sheet */}
+      {/* Also included */}
       <Section>
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          <Image
-            src="/images/inventory.png"
-            alt="The Ch'rps app's Par Sheet tab, showing a below-par paper towels count flagged in red"
-            width={874}
-            height={1322}
-            className="mx-auto w-full max-w-xs rounded-[var(--radius-card)] object-contain"
-          />
-          <div>
-            <h2 className="font-heading text-3xl font-semibold text-ink">
-              Cups, lids and toppings, counted before they run out.
-            </h2>
-            <p className="mt-5 text-muted">
-              A top-up count tracker for par levels. Someone looks, someone
-              types the number they see. Organize items by storage area,
-              bind an NFC tag to the walk-in or the shelf, and let <Brand />{" "}
-              flag anything that&rsquo;s dropped below par before a manager
-              has to go looking.
-            </p>
-            <ul className="mt-6 space-y-2 text-sm text-muted">
-              <li className="flex items-start gap-2">
-                <AppIcon name="package" size={18} className="mt-0.5 shrink-0 text-brand" />
-                Grouped by area: Freezer, Dry Storage, Bar, or however your
-                space is laid out.
-              </li>
-              <li className="flex items-start gap-2">
-                <AppIcon name="nfc" size={18} className="mt-0.5 shrink-0 text-brand" />
-                NFC-tagged storage locations, sharing the same tags your
-                tasks already use.
-              </li>
-              <li className="flex items-start gap-2">
-                <AppIcon name="bell" size={18} className="mt-0.5 shrink-0 text-brand" />
-                Par-level alerts, so a low count gets caught at a glance.
-              </li>
-            </ul>
-          </div>
+        <h2 className="font-heading text-center text-3xl font-semibold text-ink">
+          Also included, no extra charge.
+        </h2>
+        <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+          {alsoIncluded.map((a) => (
+            <Link
+              key={a.title}
+              href={a.href}
+              className="group rounded-[var(--radius-card)] border border-border bg-white p-5 transition-colors hover:border-brand"
+            >
+              <div className="mb-2 flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-button)] bg-card text-brand">
+                  <AppIcon name={a.icon} size={18} />
+                </span>
+                <h3 className="text-base font-semibold text-ink group-hover:text-brand">
+                  {a.title}
+                </h3>
+              </div>
+              <p className="text-sm text-muted">{a.body}</p>
+            </Link>
+          ))}
         </div>
-      </Section>
-
-      {/* Time clock */}
-      <Section bg="bg-card">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-brand">
-            <AppIcon name="clock" size={24} />
-          </span>
-          <h2 className="font-heading text-3xl font-semibold text-ink">
-            Clock in with the same tap.
-          </h2>
-          <p className="mt-3 text-muted">
-            Staff punch in and out on their own phone at your location&rsquo;s
-            clock tag. You get weekly hours per person, regular and overtime,
-            and a CSV to take to your payroll provider. It tracks hours only; it&rsquo;s not a
-            payroll system.
-          </p>
-          <div className="mt-6">
-            <Button href="/time-tracking" variant="secondary">
-              See the time clock
-            </Button>
-          </div>
-        </div>
+        <p className="mt-8 text-center text-sm text-muted">
+          One plan, every feature, priced per location.{" "}
+          <Link
+            href="/pricing"
+            className="font-semibold text-brand hover:underline"
+          >
+            See pricing
+          </Link>
+        </p>
       </Section>
 
       {/* Verification / MFA-by-presence — hidden, not ready for production
@@ -308,7 +412,7 @@ export default function Home() {
       */}
 
       {/* Vertical teaser */}
-      <Section>
+      <Section bg="bg-card">
         <div className="text-center">
           <h2 className="font-heading text-3xl font-semibold text-ink">
             Built for shops that close with one person.
@@ -347,7 +451,7 @@ export default function Home() {
       </Section>
 
       {/* Multi-location */}
-      <Section bg="bg-card">
+      <Section>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-heading text-3xl font-semibold text-ink">
             Running more than one location?
