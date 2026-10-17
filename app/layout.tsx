@@ -31,21 +31,28 @@ const plexMono = IBM_Plex_Mono({
 
 const siteUrl = "https://usechrps.com";
 
+const title = "Ch'rps — Know the checklist got done.";
+const description =
+  "Ch'rps verifies opening, closing and cleaning checklists with a tap on an NFC tag, so you know the work got done. Built for treat shops, drink shops and restaurants. Priced per location, not per employee.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Ch'rps — Proof the machine got cleaned and the shop got closed.",
+    default: title,
     template: "%s — Ch'rps",
   },
-  description:
-    "Ch'rps verifies opening, closing and machine-cleaning checklists with a tap on an NFC tag. Built for soft-serve, froyo, soda and coffee shops — priced per location, not per employee.",
+  description,
   openGraph: {
-    title: "Ch'rps — Proof the machine got cleaned and the shop got closed.",
-    description:
-      "Ch'rps verifies opening, closing and machine-cleaning checklists with a tap on an NFC tag. Built for soft-serve, froyo, soda and coffee shops — priced per location, not per employee.",
+    title,
+    description,
     url: siteUrl,
     siteName: "Ch'rps",
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title,
+    description,
   },
 };
 
